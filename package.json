@@ -1,5 +1,5 @@
 {
-	"name": "adun-css",
+	"name": "adun.css",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -8,7 +8,7 @@
 	},
 	"keywords": [
 		"adun.studio",
-		"adun-css",
+		"adun.css",
 		"sass",
 		"ecommerce",
 		"modern css",
@@ -16,6 +16,8 @@
 		"purgecss",
 		"sass-starter-template"
 	],
+	"author": "Claudius A.",
+	"license": "ISC",
 	"browserslist": [
 		"> 0.2%",
 		"last 2 versions",
@@ -23,7 +25,5 @@
 	],
 	"devDependencies": {
 		"purgecss": "^5.0.0"
-	},
-	"author": "Claudius A.",
-	"license": "ISC"
+	}
 }
