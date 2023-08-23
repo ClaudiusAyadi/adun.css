@@ -1,0 +1,13 @@
+{
+	"liveSassCompile.settings.formats": [
+		{
+			"format": "compressed",
+			"extensionName": ".css.min",
+			"savePath": "/dist/css"
+		}
+	],
+	"liveSassCompile.settings.forceBaseDirectory": "/src/scss",
+	"liveSassCompile.settings.useNewCompiler": true,
+	"liveSassCompile.settings.watchOnLaunch": true,
+	"liveSassCompile.settings.autoprefix": true
+}
