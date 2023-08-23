@@ -1,0 +1,43 @@
+@use "./mixin" as *;
+@use "../base/colors" as *;
+@use "../base/typography" as *;
+@use "../base/spacing" as *;
+@use "../base/utilities" as *;
+@use "../layouts/grids" as *;
+
+:root {
+	/* ------------------- */
+	/*     COLOR SYSTEM     */
+	/* ------------------- */
+	@include color-variables;
+	/* ------------------- */
+	/*   TYPOGRAPHY SYSTEM */
+	/* ------------------- */
+	/* FONT FAMILY */
+	@include one-step-loop($font-family);
+	/* FONT WEIGHTS */
+	@include one-step-loop($font-weight);
+	/* FONT SIZES */
+	@include one-step-loop($type-scale);
+	/* LINE HEIGHTS */
+	@include one-step-loop($line-heights);
+	/* ------------------- */
+	/*    SPACING SYSTEM   */
+	/* ------------------- */
+	@include one-step-loop($gap-map);
+	/* ------------------- */
+	/*     GRID SYSTEM     */
+	/* ------------------- */
+	@include one-step-loop($grid-system);
+	/* ------------------- */
+	/*     UTILITIES       */
+	/* ------------------- */
+	/* OFFSET */
+	@include one-step-loop($offset-map);
+	/* WIDTHS */
+	@include one-step-loop($width-map);
+	/* RADIUS */
+	@include one-step-loop($radius-map);
+	/* SHADOW */
+	@include one-step-loop($shadow-map);
+}

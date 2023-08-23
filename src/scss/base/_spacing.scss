@@ -1,0 +1,57 @@
+@use "../abstracts/mixin" as *;
+
+// SPACING
+$gap-map: (
+	gap: 0.5em,
+	gap-4xs: clamp(0.52rem, calc(-0.03vw + 0.53rem), 0.49rem),
+	gap-3xs: clamp(0.66rem, calc(0.04vw + 0.64rem), 0.7rem),
+	gap-2xs: clamp(0.82rem, calc(0.16vw + 0.77rem), 0.99rem),
+	gap-xs: clamp(1.02rem, calc(0.36vw + 0.91rem), 1.4rem),
+	gap-s: clamp(1.28rem, calc(0.67vw + 1.07rem), 1.98rem),
+	gap-m: clamp(1.6rem, calc(1.15vw + 1.23rem), 2.8rem),
+	gap-l: clamp(2rem, calc(1.87vw + 1.4rem), 3.96rem),
+	gap-xl: clamp(2.5rem, calc(2.96vw + 1.55rem), 5.6rem),
+	gap-2xl: clamp(3.13rem, calc(4.58vw + 1.66rem), 7.92rem),
+	gap-3xl: clamp(3.91rem, calc(6.97vw + 1.68rem), 11.19rem),
+	gap-4xl: clamp(4.88rem, calc(10.46vw + 1.53rem), 15.83rem),
+	section-gap: var(--gap-3xl),
+);
+
+// OFFSET MAP
+$offset-map: (
+	offset: 8rem,
+	header-height: var(--offset),
+	underline-offset: 0.25em,
+);
+
+// WIDTH MAP
+$width-map: (
+	w: 136.6,
+	w-s: calc((var(--w) * 0.25) * 1rem),
+	// 34.15rem
+	w-m: calc((var(--w) * 0.5) * 1rem),
+	// 68.3rem
+	w-l: calc((var(--w) * 0.75) * 1rem),
+	// 102.45rem
+	w-max: calc(var(--w) * 1rem),
+	// 136.6rem
+);
+
+// RADIUS MAP
+$radius-map: (
+	radius-xs: 0.25rem,
+	radius-s: 0.5rem,
+	radius-m: 1rem,
+	radius-l: 2rem,
+	radius-50: 50%,
+	radius-100: 100%,
+	radius-full: 999rem,
+);
+
+// SHADOW MAP
+$shadow-map: (
+	shadow-s: 0 0.1rem 0.2rem 0 var(--alt-ultra-dark),
+	shadow-m: 0 0.2rem 1rem 0 var(--alt-ultra-dark),
+	shadow-l: 0 0.5rem 3rem 0 var(--alt-ultra-dark),
+	card-shadow: 0 2rem 4rem -3rem var(--alt-ultra-dark),
+);

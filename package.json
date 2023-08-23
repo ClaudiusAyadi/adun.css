@@ -1,0 +1,29 @@
+{
+	"name": "adun-css",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "purgecss --css dist/css/app.css --content *.html --output dist/css/"
+	},
+	"keywords": [
+		"adun.studio",
+		"adun-css",
+		"sass",
+		"ecommerce",
+		"modern css",
+		"responsive design",
+		"purgecss",
+		"sass-starter-template"
+	],
+	"browserslist": [
+		"> 0.2%",
+		"last 2 versions",
+		"not dead"
+	],
+	"devDependencies": {
+		"purgecss": "^5.0.0"
+	},
+	"author": "Claudius A.",
+	"license": "ISC"
+}

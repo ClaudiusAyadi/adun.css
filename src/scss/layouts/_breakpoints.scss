@@ -1,0 +1,29 @@
+@mixin phone {
+	@media only screen and (width <= 550px) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media only screen and (width <= 767px) {
+		@content;
+	}
+}
+
+@mixin laptop {
+	@media only screen and (width <= 991px) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media only screen and (width >= 1024px) {
+		@content;
+	}
+}
+
+@mixin vp($width) {
+	@media only screen and (width <= $width) {
+		@content;
+	}
+}

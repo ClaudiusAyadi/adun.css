@@ -1,0 +1,16 @@
+@use "../layouts/breakpoints" as *;
+
+/* UTILITY CLASSES */
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.p {
+	max-width: 65ch;
+	line-height: 150%;
+
+	@include tablet {
+		padding-inline: var(--gap-xs);
+	}
+}

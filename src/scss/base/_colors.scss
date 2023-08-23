@@ -1,0 +1,77 @@
+$colors: (
+	base: (
+		h: 51,
+		s: 100%,
+		l: 49%,
+	),
+
+	alt: (
+		h: 356,
+		s: 75%,
+		l: 58%,
+	),
+
+	action: (
+		h: 214,
+		s: 100%,
+		l: 34%,
+	),
+);
+
+$variations: (
+	1: (
+		hue: 1,
+		saturation: -2,
+		lightness: 95%,
+	),
+	2: (
+		hue: 2,
+		saturation: -1,
+		lightness: 85%,
+	),
+	3: (
+		hue: 3,
+		saturation: 5,
+		lightness: 50%,
+	),
+	4: (
+		hue: 4,
+		saturation: -4,
+		lightness: 25%,
+	),
+	5: (
+		hue: 5,
+		saturation: -5,
+		lightness: 10%,
+	),
+);
+
+// COLOR VARIABLES LOOP
+@mixin color-variables {
+	@each $color, $values in $colors {
+		$bH: map-get($values, h);
+		$bS: map-get($values, s);
+		$bL: map-get($values, l);
+
+		// Generate main colors variables
+		--#{$color}-h: #{$bH};
+		--#{$color}-s: #{$bS};
+		--#{$color}-l: #{$bL};
+		--#{$color}: hsl(#{$bH} #{$bS} #{$bL});
+
+		@each $variation, $adjustments in $variations {
+			$h: max(min($bH + map-get($adjustments, hue), 360), 0);
+			$s: max(min($bS + map-get($adjustments, saturation), 100%), 0%);
+			$l: max(min(map-get($adjustments, lightness), 100%), 0%);
+
+			// Generate variant variables
+			--#{$color}-#{$variation}: hsl(#{$h} #{$s} #{$l});
+		}
+
+		// Generate transparent variables
+		@for $i from 1 through 9 {
+			$a: $i * 0.1;
+			--#{$color}-#{$i * 10}: hsl(#{$bH} #{$bS} #{$bL} / #{$a});
+		}
+	}
+}
