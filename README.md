@@ -4,7 +4,9 @@
 
 ---
 
-This is my personal CSS Framework or project starter kit based on SASS (SCSS) and CSS Variables. This Framework is heavily inspired by `ACSS` ([Automatic CSS by Kevin Geary](https://automaticcss.com/)).
+This is my personal CSS Framework or project starter kit based on SASS (SCSS) and CSS Variables. This Framework is heavily inspired by `ACSS` ([Automatic CSS by Kevin Geary](https://automaticcss.com/)). It is the second version of my former SASS Starter Template. It simply shows my web dev learning and growth. I hope to keep working on it and make it the best.
+
+### FEATURES
 
 The framework includes classes for common CSS rules (e.g. grids, flex, column-counts, etc.), and tons of readily available CSS variables for nearly every property you would need in your projects.
 
@@ -72,4 +74,6 @@ _You can use `npm` too._
 
 <br>
 
-Always check back for the newest updates.
+**Always check back for the newest updates.**
+
+**Want to contribute? Let me know, please.**
