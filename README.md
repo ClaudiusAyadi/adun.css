@@ -40,7 +40,7 @@ Finally, run purgeCSS when you're ready to deploy:
 pnpm purge
 ```
 
-- **PostCSS** and plugins - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats.
+- **PostCSS and plugins** - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats.
 
 To use this version...
 
