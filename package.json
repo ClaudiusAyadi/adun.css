@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"purge": "purgecss --css dist/css/app.css --content *.html --output dist/css/"
+		"purge": "purgecss --css public/assets/css/app.css --content public/index.html --output public/assets/css/app.css"
 	},
 	"keywords": [
 		"adun.studio",
