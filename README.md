@@ -40,6 +40,8 @@ pnpm install
 pnpm purge
 ```
 
+---
+
 - **PostCSS and plugins** - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats.
 
 To use this version...
