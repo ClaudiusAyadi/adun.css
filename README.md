@@ -34,13 +34,13 @@ I have included a local setting for the plugin under `.vscode` folder. You can m
 pnpm install
 ```
 
-4. Finally, run purgeCSS when you're ready to deploy:
+4. Build 🥂
+
+5. Finally, run purgeCSS when you're ready to deploy:
 
 ```bash
 pnpm purge
 ```
-
-5. Build 🥂
 
 ---
 
