@@ -65,3 +65,7 @@ pnpm start
 PostCSS handles everything and you don't have to do any extra configuration.
 
 _You can use `npm` too._
+
+<br>
+
+Always check back for the newest updates.

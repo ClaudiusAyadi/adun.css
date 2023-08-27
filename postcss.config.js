@@ -1,5 +1,5 @@
-const purgecss = require("@fullhuman/postcss-purgecss");
 const postcssSass = require("@csstools/postcss-sass");
+const purgecss = require("@fullhuman/postcss-purgecss");
 const postcss = require("postcss");
 
 module.exports = {
