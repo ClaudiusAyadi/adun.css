@@ -14,10 +14,12 @@ To use this version, install [Live SASS Compile](https://marketplace.visualstudi
 
 Also, delete `package-postcss.json` and `postcss.config.js` since you don't need them for this version. It's optional but helps to make your project structure tidy.
 
-Finally, run `pnpm install` or `npm install` to install `purgeCSS`, then `pnpm purge` or `npm run purge` to remove unused CSS in the final compiled CSS.
+Finally, when you are ready to deploy, run `pnpm install` to install `purgeCSS` plugin, then `pnpm purge` to remove unused CSS in the final compiled CSS.
 
-ii. PostCSS and plugins - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats. Everything is handled by `PostCSS` and easy to modify to suit your needs.
+ii. PostCSS and plugins - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats.
 
 To use this version, delete `package.json`, then rename `package-postcss.json` to `package.json`.
 
-Run `pnpm install` or `npm install`, then `pnpm start` or `npm start` to build.
+Run `pnpm install` and `pnpm start` to install all dependencies and start building. PostCSS handles everything and you don't have to do anything extra.
+
+**You can use `npm` too.**
