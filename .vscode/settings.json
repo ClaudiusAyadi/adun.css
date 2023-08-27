@@ -3,7 +3,7 @@
 		{
 			"format": "compressed",
 			"extensionName": ".css.min",
-			"savePath": "/dist/css"
+			"savePath": "/public/assets/css"
 		}
 	],
 	"liveSassCompile.settings.forceBaseDirectory": "/src/scss",
