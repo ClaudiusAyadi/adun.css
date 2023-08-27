@@ -1,6 +1,0 @@
-// 1-STEP VARIABLE LOOP
-@mixin one-step-loop($map) {
-	@each $map-item, $value in $map {
-		--#{$map-item}: #{$value};
-	}
-}
