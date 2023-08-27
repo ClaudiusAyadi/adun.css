@@ -1,4 +1,4 @@
-# ADUN CSS (adun.css)
+# KetoCSS
 
 This is my personal, lean CSS Framework or project starter template based on SASS (SCSS) and CSS Variables. This framework is heavily inspired by ACSS ([Automatic CSS by Kevin Geary](https://automaticcss.com/)).
 
@@ -12,12 +12,12 @@ I chose this method because the SASS compiler used in PostCSS does not output co
 
 To use this version, install [Live SASS Compile](https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass&ssr=false). I have included a local setting for the plugin under `.vscode` folder. You can modify it to fit your project structure.
 
-Also, delete `package-postcss.json` and `postcss.config.js`. It's optional but helps to make your project structure tidy.
+Also, delete `package-postcss.json` and `postcss.config.js` since you don't need them for this version. It's optional but helps to make your project structure tidy.
 
-Finally, run `pnpm purge` to remove unused CSS in the final compiled CSS.
+Finally, run `pnpm install` or `npm install` to install `purgeCSS`, then `pnpm purge` or `npm run purge` to remove unused CSS in the final compiled CSS.
 
-ii. PostCSS and plugins - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats.
+ii. PostCSS and plugins - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats. Everything is handled by `PostCSS` and easy to modify to suit your needs.
 
 To use this version, delete `package.json`, then rename `package-postcss.json` to `package.json`.
 
-Run `pnpm install` or `npm install`, then `pnpm start` or `npm start`.
+Run `pnpm install` or `npm install`, then `pnpm start` or `npm start` to build.
