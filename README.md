@@ -24,17 +24,17 @@ Install [Live SASS Compile](https://marketplace.visualstudio.com/items?itemName=
 
 I have included a local setting for the plugin under `.vscode` folder. You can modify it to fit your project structure.
 
-Click on `Watch SASS` to compile.
+1. Click on `Watch SASS` to compile.
 
-Delete `package-postcss.json` and `postcss.config.js`.
+2. Delete `package-postcss.json` and `postcss.config.js`.
 
-Install purgeCSS:
+3. Install purgeCSS:
 
 ```bash
 pnpm install
 ```
 
-Finally, run purgeCSS when you're ready to deploy:
+4. Finally, run purgeCSS when you're ready to deploy:
 
 ```bash
 pnpm purge
@@ -44,24 +44,24 @@ pnpm purge
 
 To use this version...
 
-Delete `package.json`.
+1. Delete `package.json`.
 
-Rename `package-postcss.json` to `package.json`.
+2. Rename `package-postcss.json` to `package.json`.
 
-Install all dependencies:
+3. Install all dependencies:
 
 ```bash
 pnpm install
 ```
 
-Start up PostCSS
+4. Start up PostCSS
 
 ```bash
 pnpm start
 ```
 
-Build!
+5. Build!
 
-PostCSS handles everything and you don't have to do anything extra.
+PostCSS handles everything and you don't have to do any extra configuration.
 
 _You can use `npm` too._
