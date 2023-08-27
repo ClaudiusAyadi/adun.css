@@ -26,8 +26,30 @@ Finally, when you are ready to deploy, run `pnpm install` to install `purgeCSS` 
 
 ii. PostCSS and plugins - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats.
 
-To use this version, delete `package.json`, then rename `package-postcss.json` to `package.json`.
+To use this version...
 
-Run `pnpm install` and `pnpm start` to install all dependencies and start building. PostCSS handles everything and you don't have to do anything extra.
+Delete `package.json`.
+
+Rename `package-postcss.json` to `package.json`.
+
+Install all dependencies:
+
+```bash
+pnpm install
+```
+
+Start up PostCSS
+
+```bash
+pnpm start
+```
+
+Build!
+
+PostCSS handles everything and you don't have to do anything extra.
 
 _You can use `npm` too._
+
+```
+
+```
