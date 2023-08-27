@@ -6,11 +6,7 @@
 	text-transform: uppercase;
 }
 
-.p {
+.readable {
 	max-width: 65ch;
-	line-height: 150%;
-
-	@include tablet {
-		padding-inline: var(--gap-xs);
-	}
+	line-height: var(--lh-lg);
 }

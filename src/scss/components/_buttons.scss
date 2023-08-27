@@ -1,25 +1,43 @@
+$btn-map: (
+	btn-transform: scale(0.98),
+	btn-transition: all 0.3s ease-in-out,
+);
+
 .btn {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	gap: var(--gap);
 	padding: var(--gap) 1.5em;
-	background-color: var(--action);
-	color: var(--base);
 	font-size: inherit;
 	font-weight: var(--fw-700);
 	text-align: center;
 	border-radius: var(--radius-full);
 	border: 0;
 	outline: 0;
-	transition: 0.25s ease-in-out;
+	transition: var(--btn-transition);
 
-	&:hover {
-		background-color: var(--action-hover);
-		transform: scale(0.98);
+	&--base {
+		background-color: var(--base);
+		color: var(--action);
+
+		&:hover {
+			background-color: var(--base-hover);
+			transform: var(--btn-transform);
+		}
+
+		&:focus {
+			background: var(--action-hover);
+		}
 	}
 
-	&:focus {
-		background: var(--action-hover);
+	&--alt {
+		background-color: var(--alt);
+		color: var(--action);
+	}
+
+	&--action {
+		background-color: var(--action);
+		color: var(--base);
 	}
 }

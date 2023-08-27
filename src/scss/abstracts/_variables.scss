@@ -3,6 +3,7 @@
 @use "../base/typography" as *;
 @use "../base/spacing" as *;
 @use "../base/utilities" as *;
+@use "../components/buttons" as *;
 @use "../layouts/grids" as *;
 
 :root {
@@ -40,4 +41,6 @@
 	@include one-step-loop($radius-map);
 	/* SHADOW */
 	@include one-step-loop($shadow-map);
+	/* BUTTON */
+	@include one-step-loop($btn-map);
 }
