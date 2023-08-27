@@ -1,12 +1,17 @@
-@use "../layouts/breakpoints" as *;
+$transitions: (
+	all-3: all 0.3s ease-in-out,
+	all-5: all 0.5s ease-in-out,
+);
 
 /* UTILITY CLASSES */
-
 .uppercase {
 	text-transform: uppercase;
 }
 
+.capitalize {
+	text-transform: capitalize;
+}
+
 .readable {
 	max-width: 65ch;
-	line-height: var(--lh-lg);
 }

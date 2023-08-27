@@ -1,12 +1,30 @@
-section {
-	max-width: 100%;
-	width: 100%;
-	margin-inline: auto;
-	padding-inline: var(--gap-xs);
+/* SITE WIDTHS */
+$containers: (
+	container: 136.6rem,
+	container-s: calc(var(--container) * 0.25),
+	// 34.15rem
+	container-m: calc(var(--container) * 0.5),
+	// 68.3rem
+	container-l: calc(var(--container) * 0.75),
+	// 102.45rem
+);
+
+// CONTAINER UTILITY CLASS LOOP
+@mixin containers {
+	@each $map-item, $value in $containers {
+		.#{$map-item} {
+			margin-inline: auto;
+			max-width: var(--#{$map-item});
+			width: 100%;
+		}
+	}
 }
 
-.container {
+// CONTAINER UTILITY CLASSES
+@include containers;
+
+section {
+	max-width: 100%;
 	margin-inline: auto;
-	max-width: var(--w-max);
-	width: 100%;
+	padding-inline: var(--gap-xs);
 }

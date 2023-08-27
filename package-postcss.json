@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "postcss src/scss/app.scss -o dist/css/app.css --w"
+		"start": "postcss src/scss/app.scss -o public/assets/css/app.css --w"
 	},
 	"keywords": [
 		"adun.studio",

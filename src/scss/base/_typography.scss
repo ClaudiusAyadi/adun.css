@@ -3,21 +3,21 @@
 
 // FONT FAMILY MAP
 $font-family: (
-	body-font: "Effra",
-	heading-font: var(--body-font),
+	body: "Effra",
+	heading: var(--body),
 );
 
 // FONT WEIGHT MAP
-$font-weight: (
-	font-100: 100,
-	font-200: 200,
-	font-300: 300,
-	font-400: 400,
-	font-500: 500,
-	font-600: 600,
-	font-700: 700,
-	font-800: 800,
-	font-900: 900,
+$font-weights: (
+	f-100: 100,
+	f-200: 200,
+	f-300: 300,
+	f-400: 400,
+	f-500: 500,
+	f-600: 600,
+	f-700: 700,
+	f-800: 800,
+	f-900: 900,
 );
 
 // FONT SIZE MAP
@@ -35,12 +35,12 @@ $type-scale: (
 // LINE HEIGHT MAP
 $line-heights: (
 	// LINE HEIGHTS
-	l-h-xs: 1.1,
-	l-h-s: 1.2,
-	l-h-m: 1.3,
-	l-h-l: 1.4,
-	l-h-xl: 1.5,
-	l-h-2xl: 1.6
+	lh-xs: 1.1,
+	lh-s: 1.2,
+	lh-m: 1.3,
+	lh-l: 1.4,
+	lh-xl: 1.5,
+	lh-2xl: 1.6
 );
 
 /* HEADING DEFAULTS */
@@ -84,3 +84,15 @@ h6 {
 	font-size: var(--text-s);
 	line-height: var(--lh-l);
 }
+
+// FONT SIZES UTILITY CLASS LOOP
+@mixin font-sizes {
+	@each $map-item, $value in $type-scale {
+		.#{$map-item} {
+			font-size: var(--#{$map-item});
+		}
+	}
+}
+
+// CONTAINER UTILITY CLASSES
+@include font-sizes;

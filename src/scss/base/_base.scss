@@ -14,13 +14,79 @@ html {
 body {
 	margin: 0 auto;
 	min-block-size: 100%;
-	font-family: var(--body-ff);
-	font-weight: var(--fw-400);
+	font-family: var(--body);
+	font-weight: var(--f-400);
 	font-size: var(--text-m);
 	line-height: var(--lh-2xl);
 	word-wrap: break-word;
 	background-color: var(--action-ultra-dark);
 	color: var(--alt);
+
+	/* DEFAULT LINKS */
+	a {
+		&:link,
+		&:visited {
+			display: inline-block;
+			color: currentColor;
+			text-decoration: none;
+			transition: var(--site-transition);
+		}
+
+		&:hover,
+		&:active {
+			color: inherit;
+		}
+	}
+
+	/* CLICKABLE CARD */
+	.clickable-card:not(a) {
+		position: static;
+	}
+
+	.clickable-card:not(a) a {
+		position: static;
+	}
+
+	.clickable-card:not(a) > a:after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		cursor: pointer;
+		display: flex;
+	}
+
+	a.clickable-card {
+		position: static;
+	}
+
+	a.clickable-card:after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		cursor: pointer;
+		display: flex;
+	}
+
+	/* OUTLINE */
+	:focus,
+	button:focus {
+		outline-style: solid;
+		outline-color: var(--alt);
+		outline-inline-size: 0.2rem;
+		outline-offset: 0.25em;
+	}
+
+	:focus:not(:focus-visible),
+	button:focus:not(:focus-visible),
+	input:active {
+		outline: none;
+	}
+
+	img {
+		height: 100%;
+		width: 100%;
+		vertical-align: middle;
+	}
 }
 
 /* SCREEN READER ACCESSIBLE NO-DISPLAY */
@@ -53,56 +119,4 @@ body {
 		transition-duration: 0s !important;
 		transition-delay: 0s !important;
 	}
-}
-
-/* CLICKABLE CARD */
-.clickable-card:not(a) {
-	position: static;
-}
-
-.clickable-card:not(a) a {
-	position: static;
-}
-
-.clickable-card:not(a) > a:after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	cursor: pointer !important;
-	display: flex;
-}
-
-a.clickable-card {
-	position: static;
-}
-
-a.clickable-card:after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	cursor: pointer !important;
-	display: flex;
-}
-
-/* OUTLINE */
-:focus,
-button:focus {
-	outline-style: solid;
-	outline-color: var(--alt);
-	outline-inline-size: 0.2rem;
-	outline-offset: 0.25em;
-}
-
-:focus:not(:focus-visible),
-button:focus:not(:focus-visible),
-input:active {
-	outline: none;
-}
-
-img {
-	height: auto;
-	max-width: 100%;
-	outline: none;
-	border-style: none;
-	vertical-align: middle;
 }

@@ -1,7 +1,5 @@
-@use "./breakpoints" as *;
-
-// Grid System
-$grid-system: (
+/* GRID SYSTEM */
+$grids: (
 	grid-1: repeat(1, minmax(0, 1fr)),
 	grid-2: repeat(2, minmax(0, 1fr)),
 	grid-3: repeat(3, minmax(0, 1fr)),
@@ -28,8 +26,8 @@ $grid-system: (
 );
 
 // GRID UTILITY CLASS LOOP
-@mixin grid-classes($map) {
-	@each $map-item, $value in $map {
+@mixin grids {
+	@each $map-item, $value in $grids {
 		.#{$map-item} {
 			display: grid;
 			grid-template-columns: var(--#{$map-item});
@@ -38,7 +36,7 @@ $grid-system: (
 }
 
 /* GRID UTILITY CLASSES */
-@include grid-classes($grid-system);
+@include grids;
 
 .flex {
 	display: flex;

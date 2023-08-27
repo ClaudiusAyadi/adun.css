@@ -1,54 +1,62 @@
-$colors: (
-	base: (
-		h: 51,
-		s: 100%,
-		l: 49%,
-	),
-
-	alt: (
-		h: 356,
-		s: 75%,
-		l: 58%,
-	),
-
-	action: (
-		h: 214,
-		s: 100%,
-		l: 34%,
-	),
+$theme: (
+	base: #fad400,
+	alt: #e4444e,
+	action: #004bad,
+	tint: #fff,
+	shade: #000,
 );
 
+/* DO NOT TOUCH ANYTHING BELOW EXCEPT YOU KNOW WHAT YOU'RE DOING */
+
+$hslColors: ();
+@each $key, $color in $theme {
+	$hValue: round(hue($color));
+	$removeDeg: calc($hValue / 1deg);
+	$hslColor: (
+		h: $removeDeg,
+		s: round(saturation($color)),
+		l: round(lightness($color)),
+	);
+
+	$hslColors: map-merge(
+		$hslColors,
+		(
+			$key: $hslColor,
+		)
+	);
+}
+
 $variations: (
-	1: (
-		hue: 1,
-		saturation: -2,
-		lightness: 95%,
+	ultra-light: (
+		h: 1,
+		s: -2,
+		l: 95%,
 	),
-	2: (
-		hue: 2,
-		saturation: -1,
-		lightness: 85%,
+	light: (
+		h: 2,
+		s: -1,
+		l: 85%,
 	),
-	3: (
-		hue: 3,
-		saturation: 5,
-		lightness: 50%,
+	medium: (
+		h: 3,
+		s: 5,
+		l: 50%,
 	),
-	4: (
-		hue: 4,
-		saturation: -4,
-		lightness: 25%,
+	dark: (
+		h: 4,
+		s: -4,
+		l: 25%,
 	),
-	5: (
-		hue: 5,
-		saturation: -5,
-		lightness: 10%,
+	ultra-dark: (
+		h: 5,
+		s: -5,
+		l: 10%,
 	),
 );
 
 // COLOR VARIABLES LOOP
-@mixin color-variables {
-	@each $color, $values in $colors {
+@mixin colors {
+	@each $color, $values in $hslColors {
 		$bH: map-get($values, h);
 		$bS: map-get($values, s);
 		$bL: map-get($values, l);
@@ -59,10 +67,15 @@ $variations: (
 		--#{$color}-l: #{$bL};
 		--#{$color}: hsl(#{$bH} #{$bS} #{$bL});
 
+		// Generate hovers
+		$lh: max(min(round(calc($bL * 1.08)), 100%), 0%);
+		--#{$color}-hover: hsl(#{$bH} #{$bS} #{$lh});
+
+		// Loop for variables
 		@each $variation, $adjustments in $variations {
-			$h: max(min($bH + map-get($adjustments, hue), 360), 0);
-			$s: max(min($bS + map-get($adjustments, saturation), 100%), 0%);
-			$l: max(min(map-get($adjustments, lightness), 100%), 0%);
+			$h: max(min($bH + map-get($adjustments, h), 360), 0);
+			$s: max(min($bS + map-get($adjustments, s), 100%), 0%);
+			$l: max(min(map-get($adjustments, l), 100%), 0%);
 
 			// Generate variant variables
 			--#{$color}-#{$variation}: hsl(#{$h} #{$s} #{$l});

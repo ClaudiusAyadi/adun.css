@@ -1,6 +1,12 @@
-$btn-map: (
+$buttons: (
 	btn-transform: scale(0.98),
-	btn-transition: all 0.3s ease-in-out,
+	btn-border: 0.2rem solid,
+	btn-border-radius: var(--radius-full),
+	btn-border-base: var(--base),
+	btn-border-alt: var(--alt),
+	btn-border-action: var(--action),
+	btn-transition: var(--all-3),
+	btn-font-weight: var(--f-700),
 );
 
 .btn {
@@ -10,34 +16,66 @@ $btn-map: (
 	gap: var(--gap);
 	padding: var(--gap) 1.5em;
 	font-size: inherit;
-	font-weight: var(--fw-700);
+	font-weight: var(--btn-font-weight);
 	text-align: center;
-	border-radius: var(--radius-full);
-	border: 0;
-	outline: 0;
+	border-radius: var(--btn-border-radius);
 	transition: var(--btn-transition);
 
-	&--base {
+	&:hover {
+		transform: var(--btn-transform);
+	}
+
+	&.btn--base {
 		background-color: var(--base);
 		color: var(--action);
+		border: var(--btn-border) var(--btn-border-base);
 
 		&:hover {
 			background-color: var(--base-hover);
-			transform: var(--btn-transform);
+		}
+
+		&:focus {
+			background: var(--base-hover);
+		}
+
+		&:active {
+			background-color: var(--base-dark);
+		}
+	}
+
+	&.btn--alt {
+		background-color: var(--alt);
+		color: var(--action);
+		border: var(--btn-border) var(--btn-border-alt);
+
+		&:hover {
+			background-color: var(--alt-hover);
+		}
+
+		&:focus {
+			background: var(--alt-hover);
+		}
+
+		&:active {
+			background-color: var(--alt-dark);
+		}
+	}
+
+	&.btn--action {
+		background-color: var(--action);
+		color: var(--base);
+		border: var(--btn-border) var(--btn-border-action);
+
+		&:hover {
+			background-color: var(--action-hover);
 		}
 
 		&:focus {
 			background: var(--action-hover);
 		}
-	}
 
-	&--alt {
-		background-color: var(--alt);
-		color: var(--action);
-	}
-
-	&--action {
-		background-color: var(--action);
-		color: var(--base);
+		&:active {
+			background-color: var(--action-dark);
+		}
 	}
 }
