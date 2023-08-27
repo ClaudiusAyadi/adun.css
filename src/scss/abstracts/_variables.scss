@@ -7,14 +7,13 @@
 @use "../layouts/containers" as *;
 @use "../layouts/grids" as *;
 
-// 1-STEP VARIABLE LOOP
-@mixin one-step-loop($map) {
-	@each $map-item, $value in $map {
-		--#{$map-item}: #{$value};
-	}
-}
-
 :root {
+	// 1-STEP VARIABLE LOOP
+	@mixin one-step-loop($map) {
+		@each $map-item, $value in $map {
+			--#{$map-item}: #{$value};
+		}
+	}
 	/* ------------------- */
 	/*     COLOR SYSTEM     */
 	/* ------------------- */
