@@ -40,6 +40,8 @@ pnpm install
 pnpm purge
 ```
 
+5. Build 🥂
+
 ---
 
 - **PostCSS and plugins** - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats.
@@ -62,7 +64,7 @@ pnpm install
 pnpm start
 ```
 
-5. Build!
+5. Build 🎉
 
 PostCSS handles everything and you don't have to do any extra configuration.
 
