@@ -14,31 +14,33 @@ The framework includes classes for common CSS rules (e.g. grids, flex, column-co
 
 ## GETTING STARTED
 
-To use this CSS Framework, clone this repo or download the zip file and extract it. There are two versions:
+To use this CSS Framework, clone this repo or download the zip file and extract it.
+
+**There are two versions:**
 
 - **SASS only** - This is the version I use personally and it uses the `Live SASS Compiler` plugin to compile the SASS, and `purgeCSS` to clean up unused CSS in the final CSS output.
 
 I chose this method because the SASS compiler used in PostCSS does not output colors as `hsl` and forces transparent variants to output as `rgba` too. I want my compiled colors to remain in `hsl` format.
 
-To use this version..
+**To use this version:**
 
-Install [Live SASS Compile](https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass&ssr=false).
+1. Install [Live SASS Compile](https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass&ssr=false).
 
 I have included a local setting for the plugin under `.vscode` folder. You can modify it to fit your project structure.
 
-1. Click on `Watch SASS` to compile.
+2. Click on `Watch SASS` to compile.
 
-2. Delete `package-postcss.json` and `postcss.config.js`.
+3. Delete `package-postcss.json` and `postcss.config.js`.
 
-3. Install purgeCSS:
+4. Install purgeCSS:
 
 ```bash
 pnpm install
 ```
 
-4. Build 🥂
+5. Build 🥂
 
-5. Finally, run purgeCSS when you're ready to deploy:
+6. Finally, run purgeCSS when you're ready to deploy:
 
 ```bash
 pnpm purge
@@ -48,7 +50,7 @@ pnpm purge
 
 - **PostCSS and plugins** - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats.
 
-To use this version...
+**To use this version:**
 
 1. Delete `package.json`.
 
