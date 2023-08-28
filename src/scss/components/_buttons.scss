@@ -1,3 +1,5 @@
+/* ONLY MODIFY IF YOU KNOW WHAT YOU ARE DOING */
+
 $buttons: (
 	btn-transform: scale(0.98),
 	btn-border: 0.2rem solid,
@@ -25,7 +27,7 @@ $buttons: (
 		transform: var(--btn-transform);
 	}
 
-	&.btn--base {
+	&.btn-base {
 		background-color: var(--base);
 		color: var(--action);
 		border: var(--btn-border) var(--btn-border-base);
@@ -43,7 +45,7 @@ $buttons: (
 		}
 	}
 
-	&.btn--alt {
+	&.btn-alt {
 		background-color: var(--alt);
 		color: var(--action);
 		border: var(--btn-border) var(--btn-border-alt);
@@ -61,7 +63,7 @@ $buttons: (
 		}
 	}
 
-	&.btn--action {
+	&.btn-action {
 		background-color: var(--action);
 		color: var(--base);
 		border: var(--btn-border) var(--btn-border-action);

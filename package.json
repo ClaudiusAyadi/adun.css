@@ -1,20 +1,26 @@
 {
-	"name": "adun.css",
+	"name": "ketoCSS",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"purge": "purgecss --css public/assets/css/app.css --content public/index.html --output public/assets/css/app.css"
+		"start": "postcss src/scss/app.scss -o public/assets/css/app.css --w"
 	},
 	"keywords": [
+		"ketoCSS",
 		"adun.studio",
-		"adun.css",
 		"sass",
 		"ecommerce",
 		"modern css",
 		"responsive design",
-		"purgecss",
-		"sass-starter-template"
+		"postcss-purgecss",
+		"sass-starter-template",
+		"postcss",
+		"postcss-sass",
+		"cssnano",
+		"postcss-preset-env",
+		"grid",
+		"flexbox"
 	],
 	"author": "Claudius A.",
 	"license": "ISC",
@@ -24,6 +30,11 @@
 		"not dead"
 	],
 	"devDependencies": {
-		"purgecss": "^5.0.0"
+		"@csstools/postcss-sass": "^5.0.1",
+		"@fullhuman/postcss-purgecss": "^5.0.0",
+		"cssnano": "^6.0.1",
+		"postcss": "^8.4.28",
+		"postcss-cli": "^10.1.0",
+		"postcss-preset-env": "^8.5.1"
 	}
 }

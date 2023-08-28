@@ -1,3 +1,5 @@
+/* DO NOT TOUCH */
+
 /* GRID SYSTEM */
 $grids: (
 	grid-1: repeat(1, minmax(0, 1fr)),
@@ -44,5 +46,4 @@ $grids: (
 		}
 	}
 }
-
 @include columns;
