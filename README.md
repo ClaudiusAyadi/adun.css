@@ -14,61 +14,20 @@ The framework includes classes for common CSS rules (e.g. grids, flex, column-co
 
 ## GETTING STARTED
 
-To use this CSS Framework, clone this repo or download the zip file and extract it.
-
-**There are two versions:**
-
-- **SASS only** - This is the version I use personally and it uses the `Live SASS Compiler` plugin to compile the SASS, and `purgeCSS` to clean up unused CSS in the final CSS output.
-
-I chose this method because the SASS compiler used in PostCSS does not output colors as `hsl` and forces transparent variants to output as `rgba` too. I want my compiled colors to remain in `hsl` format.
-
-**To use this version:**
-
-1. Install [Live SASS Compile](https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass&ssr=false).
-
-I have included a local setting for the plugin under `.vscode` folder. You can modify it to fit your project structure.
-
-2. Click on `Watch SASS` to compile.
-
-3. Delete `package-postcss.json` and `postcss.config.js`.
-
-4. Install purgeCSS:
+1. Clone the repo or download the zip file and extract it.
+2. Install all dependencies:
 
 ```bash
 pnpm install
 ```
 
-5. Build 🥂
-
-6. Finally, run purgeCSS when you're ready to deploy:
-
-```bash
-pnpm purge
-```
-
----
-
-- **PostCSS and plugins** - This is the best version if you don't mind your final colors being in `hex` and `rgba` formats.
-
-**To use this version:**
-
-1. Delete `package.json`.
-
-2. Rename `package-postcss.json` to `package.json`.
-
-3. Install all dependencies:
-
-```bash
-pnpm install
-```
-
-4. Start up PostCSS
+3. Start up PostCSS
 
 ```bash
 pnpm start
 ```
 
-5. Build 🎉
+4. Build away 🎉
 
 PostCSS handles everything and you don't have to do any extra configuration.
 
