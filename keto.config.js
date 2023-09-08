@@ -5,8 +5,8 @@ export default {
 		action: "#00f",
 	},
 	fontFamily: {
-		baseFont: "Mono",
-		altFont: "serif",
+		"base-font": "Mono",
+		"alt-font": "serif",
 	},
 	fontSizes: {
 		minFontSize: 10,

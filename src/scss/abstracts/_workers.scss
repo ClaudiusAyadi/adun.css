@@ -33,16 +33,21 @@ $colors: (
 "black": #000
 );
 
+
+
+
+
 $container: (
-	minWidth: 320,
-	maxWidth: 1366,
+minWidth: 320,
+maxWidth: 1366
 );
 $fontFamily: (
-	baseFont: Mono,
-	altFont: serif,
+base-font: Mono,
+alt-font: serif
 );
 
 $fontSizes: (
-	minFontSize: 10,
-	maxFontSize: 80,
+minFontSize: 10,
+maxFontSize: 80
 );
+

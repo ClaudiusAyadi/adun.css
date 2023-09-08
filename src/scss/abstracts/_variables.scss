@@ -21,9 +21,9 @@
 
 	/* TYPOGRAPHY SYSTEM */
 	@include fontFamily;
-	// @include fontWeights;
-	// @include typeScale;
-	// @include lineHeights;
+	@include fluidType;
+	@include fontWeights;
+	@include lineHeights;
 
 	/* SPACING SYSTEM */
 	@include one-step-loop($gaps);

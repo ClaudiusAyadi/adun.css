@@ -1,5 +1,3 @@
-/* ONLY EDIT BODY PROPERTIES. DO NOT TOUCH ANYWHERE ELSE */
-
 /* DO NOT TOUCH */
 
 /* BASE SETTINGS */
@@ -16,21 +14,19 @@ html {
 }
 
 body {
-	/* EDIT ONLY THIS BLOCK */
-	--body-bg: var(--action-ultra-dark);
-	--body-color: var(--alt);
-	--body-font: var(--base-font);
-	--body-text: var(--text-m);
-	--body-line: var(--line-l);
+	--bg: var(--action-ultra-dark);
+	--color: var(--alt);
+	--font-family: var(--base-font);
+	--font-weight: var(--400);
+	--font-size: var(--text-m);
+	--line: var(--line-l);
 
-	/* STOP EDITING */
-
-	background-color: var(--body-bg);
-	color: var(--body-color);
-	font-family: var(--body-font);
-	font-weight: var(--f-400);
-	font-size: var(--body-text);
-	line-height: var(--body-line);
+	background-color: var(--bg);
+	color: var(--color);
+	font-family: var(--font-family);
+	font-weight: var(--font-weight);
+	font-size: var(--font-size);
+	line-height: var(--line);
 	min-block-size: 100%;
 	word-wrap: break-word;
 	-webkit-font-smoothing: antialiased;
