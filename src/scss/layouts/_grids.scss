@@ -27,8 +27,15 @@ $grids: (
 	grid-auto-6: repeat(auto-fit, minmax(min(18.6838340486rem, 100vw - 6rem), 1fr)),
 );
 
-/* GRID UTILITY CLASSES */
+// GRID VARIABLES
 @mixin grids {
+	@each $grid, $value in $grids {
+		--#{$grid}: var(--#{$grid});
+	}
+}
+
+/* GRID UTILITY CLASSES */
+@mixin grid-classes {
 	@each $map-item, $value in $grids {
 		.#{$map-item} {
 			display: grid;
@@ -36,7 +43,7 @@ $grids: (
 		}
 	}
 }
-@include grids;
+@include grid-classes;
 
 /* COLUMN COUNTS */
 @mixin columns {

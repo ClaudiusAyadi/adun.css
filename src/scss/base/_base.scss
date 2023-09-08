@@ -4,7 +4,7 @@
 
 /* BASE SETTINGS */
 html {
-	font-size: 62.5%;
+	font-size: 100%;
 }
 
 *,
@@ -15,85 +15,108 @@ html {
 	box-sizing: border-box;
 }
 
-/* EDIT ONLY THIS BLOCK */
 body {
-	margin: 0 auto;
-	min-block-size: 100%;
-	font-family: var(--body);
-	font-weight: var(--f-400);
-	font-size: var(--text-m);
-	line-height: var(--lh-2xl);
-	word-wrap: break-word;
-	background-color: var(--action-ultra-dark);
-	color: var(--alt);
+	/* EDIT ONLY THIS BLOCK */
+	--body-bg: var(--action-ultra-dark);
+	--body-color: var(--alt);
+	--body-font: var(--base-font);
+	--body-text: var(--text-m);
+	--body-line: var(--line-l);
 
 	/* STOP EDITING */
 
-	/* DEFAULT LINKS */
-	a {
-		&:link,
-		&:visited {
-			display: inline-block;
-			color: currentColor;
-			text-decoration: none;
-			transition: var(--all-3);
-		}
+	background-color: var(--body-bg);
+	color: var(--body-color);
+	font-family: var(--body-font);
+	font-weight: var(--f-400);
+	font-size: var(--body-text);
+	line-height: var(--body-line);
+	min-block-size: 100%;
+	word-wrap: break-word;
+	-webkit-font-smoothing: antialiased;
+}
 
-		&:hover,
-		&:active {
-			color: inherit;
-		}
+/* DEFAULT LINKS */
+a {
+	&:link,
+	&:visited {
+		display: inline-flex;
+		color: currentColor;
+		text-decoration: none;
+		transition: var(--all-3);
 	}
 
-	/* CLICKABLE CARD */
-	.clickable-card:not(a) {
-		position: static;
+	&:hover,
+	&:active {
+		color: inherit;
 	}
+}
 
-	.clickable-card:not(a) a {
-		position: static;
-	}
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	height: 100%;
+	width: 100%;
+	max-width: 100%;
+}
 
-	.clickable-card:not(a) > a:after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		cursor: pointer;
-		display: flex;
-	}
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
 
-	a.clickable-card {
-		position: static;
-	}
+#root,
+#__next {
+	isolation: isolate;
+}
 
-	a.clickable-card:after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		cursor: pointer;
-		display: flex;
-	}
+/* CLICKABLE CARD */
+.clickable-card:not(a) {
+	position: static;
+}
 
-	/* OUTLINE */
-	:focus,
-	button:focus {
-		outline-style: solid;
-		outline-color: var(--alt);
-		outline-inline-size: 0.2rem;
-		outline-offset: 0.2em;
-	}
+.clickable-card:not(a) a {
+	position: static;
+}
 
-	:focus:not(:focus-visible),
-	button:focus:not(:focus-visible),
-	input:active {
-		outline: none;
-	}
+.clickable-card:not(a) > a:after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	cursor: pointer;
+	display: flex;
+}
 
-	img {
-		height: 100%;
-		width: 100%;
-		vertical-align: middle;
-	}
+a.clickable-card {
+	position: static;
+}
+
+a.clickable-card:after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	cursor: pointer;
+	display: flex;
+}
+
+/* OUTLINE */
+:focus,
+button:focus {
+	outline-style: solid;
+	outline-color: var(--alt);
+	outline-inline-size: 0.2rem;
+	outline-offset: 0.2em;
+}
+
+:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:active {
+	outline: none;
 }
 
 /* SCREEN READER ACCESSIBLE NO-DISPLAY */

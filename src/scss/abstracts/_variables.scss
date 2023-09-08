@@ -16,43 +16,27 @@
 			--#{$map-item}: #{$value};
 		}
 	}
-	/* ------------------- */
-	/*     COLOR SYSTEM     */
-	/* ------------------- */
+	/* COLOR SYSTEM */
 	@include colors;
-	/* ------------------- */
-	/*   TYPOGRAPHY SYSTEM */
-	/* ------------------- */
-	/* FONT FAMILY */
-	@include one-step-loop($font-family);
-	/* FONT WEIGHTS */
-	@include one-step-loop($font-weights);
-	/* FONT SIZES */
-	@include one-step-loop($type-scale);
-	/* LINE HEIGHTS */
-	@include one-step-loop($line-heights);
-	/* ------------------- */
-	/*    SPACING SYSTEM   */
-	/* ------------------- */
+
+	/* TYPOGRAPHY SYSTEM */
+	@include fontFamily;
+	// @include fontWeights;
+	// @include typeScale;
+	// @include lineHeights;
+
+	/* SPACING SYSTEM */
 	@include one-step-loop($gaps);
-	/* ------------------- */
-	/*     GRID SYSTEM     */
-	/* ------------------- */
-	@include one-step-loop($grids);
-	/* ------------------- */
-	/*     UTILITIES       */
-	/* ------------------- */
-	/* OFFSET */
+
+	/* GRID SYSTEM */
+	@include grids;
+
+	/* UTILITY SYSTEM */
 	@include one-step-loop($offsets);
-	/* CONTAINERS */
-	@include one-step-loop($containers);
-	/* BORDER-RADIUS */
+	@include containers;
 	@include one-step-loop($radii);
-	/* SHADOWS */
 	@include one-step-loop($shadows);
-	/* BUTTONS & CARDS */
 	@include one-step-loop($buttons);
 	@include one-step-loop($cards);
-	/* TRANSITIONS */
 	@include one-step-loop($transitions);
 }

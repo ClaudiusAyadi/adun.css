@@ -16,6 +16,21 @@ $transitions: (
 	text-transform: capitalize;
 }
 
-.readable {
-	max-width: 65ch;
+.flex {
+	display: flex;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-col-reverse {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.flex-reverse {
+	display: flex;
+	flex-direction: row-reverse;
 }

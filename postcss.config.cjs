@@ -5,7 +5,7 @@ const cssnano = require("cssnano");
 
 module.exports = {
 	plugins: [
-		postcss([postcssSass()]).process("src/scss/app.scss", {syntax: require("postcss-scss")}),
+		postcss([postcssSass()]).process("src/scss/app.scss"),
 		require("postcss-preset-env")({stage: 1}),
 		purgeCSS({
 			content: ["./**/*.html"],

@@ -1,0 +1,48 @@
+$colors: (
+"base": #f0b4a8,
+"base-hover": #f3c3b9,
+"base-ultra-light": #fef8f6,
+"base-light": #fbece9,
+"base-medium": #f8dad4,
+"base-dark": #a87e76,
+"base-ultra-dark": #785a54,
+"alt": #0ff,
+"alt-hover": #33ffff,
+"alt-ultra-light": #e6ffff,
+"alt-light": #bfffff,
+"alt-medium": #80ffff,
+"alt-dark": #00b3b3,
+"alt-ultra-dark": #008080,
+"action": #00f,
+"action-hover": #3333ff,
+"action-ultra-light": #e6e6ff,
+"action-light": #bfbfff,
+"action-medium": #8080ff,
+"action-dark": #0000b3,
+"action-ultra-dark": #000080,
+"white": #fff,
+"grey-1": #e6e6e6,
+"grey-2": #cccccc,
+"grey-3": #b3b3b3,
+"grey-4": #999999,
+"grey-5": #808080,
+"grey-6": #666666,
+"grey-7": #4d4d4d,
+"grey-8": #333333,
+"grey-9": #191919,
+"black": #000
+);
+
+$container: (
+	minWidth: 320,
+	maxWidth: 1366,
+);
+$fontFamily: (
+	baseFont: Mono,
+	altFont: serif,
+);
+
+$fontSizes: (
+	minFontSize: 10,
+	maxFontSize: 80,
+);

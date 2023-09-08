@@ -1,10 +1,13 @@
 {
 	"name": "ketoCSS",
+	"private": true,
 	"version": "1.0.0",
+	"type": "module",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "postcss src/scss/app.scss -o public/assets/css/app.css --w"
+		"dev": "node src/js/colors.js",
+		"build": "postcss src/scss/app.scss -o public/assets/css/app.min.css --w"
 	},
 	"keywords": [
 		"ketoCSS",
@@ -33,8 +36,11 @@
 		"@csstools/postcss-sass": "^5.0.1",
 		"@fullhuman/postcss-purgecss": "^5.0.0",
 		"cssnano": "^6.0.1",
-		"postcss": "^8.4.28",
+		"postcss": "^8.4.29",
 		"postcss-cli": "^10.1.0",
-		"postcss-preset-env": "^8.5.1"
+		"postcss-preset-env": "^8.5.1",
+		"postcss-pxtorem": "^6.0.0",
+		"postcss-scss": "^4.0.7",
+		"values.js": "^2.1.1"
 	}
 }
