@@ -21,13 +21,19 @@ The framework includes classes for common CSS rules (e.g. grids, flex, column-co
 pnpm install
 ```
 
-3. Start up PostCSS
+3. Customize and make it yours:
+
+```bash
+edit keto.config.js
+```
+
+4. Start up your project:
 
 ```bash
 pnpm start
 ```
 
-4. Build away 🎉
+5. Build away 🎉
 
 PostCSS handles everything and you don't have to do any extra configuration.
 
