@@ -7,7 +7,7 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "node src/js/colors.js & node src/js/container.js & node src/js/typography.js",
-		"build": "postcss src/scss/app.scss -o public/assets/css/app.min.css --w"
+		"start": "pnpm dev & postcss src/scss/app.scss -o public/assets/css/app.min.css --w"
 	},
 	"keywords": [
 		"ketoCSS",
