@@ -33,6 +33,16 @@ $colors: (
 "black": #000
 );
 
+$fontSizes: (
+minFontSize: 10,
+maxFontSize: 80
+);
+
+
+
+
+
+
 
 
 
@@ -45,9 +55,3 @@ $fontFamily: (
 base-font: Mono,
 alt-font: serif
 );
-
-$fontSizes: (
-minFontSize: 10,
-maxFontSize: 80
-);
-

@@ -26,17 +26,16 @@
 	@include lineHeights;
 
 	/* SPACING SYSTEM */
-	@include one-step-loop($gaps);
+	@include spaces;
 
 	/* GRID SYSTEM */
 	@include grids;
 
 	/* UTILITY SYSTEM */
-	@include one-step-loop($offsets);
+	@include offsets;
 	@include containers;
-	@include one-step-loop($radii);
-	@include one-step-loop($shadows);
-	@include one-step-loop($buttons);
+	@include radii;
+	@include shadows;
 	@include one-step-loop($cards);
 	@include one-step-loop($transitions);
 }
