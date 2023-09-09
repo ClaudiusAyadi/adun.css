@@ -9,6 +9,16 @@
 	}
 }
 
+/* FONT FAMILY CLASSES */
+@mixin families {
+	@each $font, $family in $fontFamily {
+		.#{$font} {
+			font-family: var(--#{$font});
+		}
+	}
+}
+@include families;
+
 /* FLUID TYPOGRAPHY */
 $min-vp: map-get($container, minWidth) * 1px;
 $max-vp: map-get($container, maxWidth) * 1px;
@@ -41,27 +51,27 @@ $fluidity: (
 	}
 }
 
-/* "text-" CLASSES */
-@mixin textClasses {
+/* "text-" FONT SIZE CLASSES */
+@mixin texts {
 	@each $text, $value in $fluidity {
-		.#{text} {
-			font-size: var(--#{text});
+		.#{$text} {
+			font-size: var(--#{$text});
 		}
 	}
 }
-@include textClasses;
+@include texts;
 
 /* FONT WEIGHTS */
 $fontWeights: (
-	100: 100,
-	200: 200,
-	300: 300,
-	400: 400,
-	500: 500,
-	600: 600,
-	700: 700,
-	800: 800,
-	900: 900,
+	weight-100: 100,
+	weight-200: 200,
+	weight-300: 300,
+	weight-400: 400,
+	weight-500: 500,
+	weight-600: 600,
+	weight-700: 700,
+	weight-800: 800,
+	weight-900: 900,
 );
 
 /* FONT WEIGHT VARIABLES */
@@ -70,6 +80,17 @@ $fontWeights: (
 		--#{$font}: #{$weight};
 	}
 }
+
+/* FONT WEIGHT CLASSES */
+@mixin weights {
+	@each $font, $weight in $fontWeights {
+		.#{$font} {
+			font-weight: var(--#{$font});
+		}
+	}
+}
+
+@include weights;
 
 /* LINE HEIGHT */
 $lineHeights: (
@@ -91,9 +112,26 @@ $lineHeights: (
 	}
 }
 
+/* "line-" CLASSES */
+@mixin lines {
+	@each $lineHeight, $value in $lineHeights {
+		.#{$lineHeight} {
+			line-height: var(--#{$lineHeight});
+		}
+	}
+}
+
+@include lines;
+
 // DEFAULTS
 [class*="text--"],
-:is(h1, h2, h3, h4, h5, h6) {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	--font-family: var(--base-font);
 	font-size: var(--font-size);
 	font-family: var(--font-family);
 	line-height: var(--line);
@@ -102,36 +140,30 @@ $lineHeights: (
 
 h1 {
 	--font-size: var(--text-3xl);
-	--font-family: var(--alt-font);
 	--line: var(--line-xs);
 }
 
 h2 {
 	--font-size: var(--text-xxl);
-	--font-family: var(--alt-font);
 	--line: var(--line-s);
 }
 
 h3 {
 	--font-size: var(--text-xl);
-	--font-family: var(--alt-font);
 	--line: var(--line-s);
 }
 
 h4 {
 	--font-size: var(--text-l);
-	--font-family: var(--alt-font);
 	--line: var(--line-s);
 }
 
 h5 {
 	--font-size: var(--text-m);
-	--font-family: var(--alt-font);
 	--line: var(--line-s);
 }
 
 h6 {
 	--font-size: var(--text-s);
-	--font-family: var(--alt-font);
 	--line: var(--line-m);
 }

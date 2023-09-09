@@ -22,9 +22,15 @@ $containers: (
 @mixin container-classes {
 	@each $container, $value in $containers {
 		.#{$container} {
-			margin-inline: auto;
+			padding-block: var(--py);
+			margin-inline: var(--mx);
 			max-inline-size: var(--#{$container});
 			inline-size: 100%;
+
+			--px: initial;
+			--py: initial;
+			--mx: auto;
+			--my: initial;
 		}
 	}
 }
@@ -32,6 +38,11 @@ $containers: (
 
 section {
 	max-inline-size: 100%;
-	margin-inline: auto;
-	padding-inline: var(--gap-xs);
+	margin-inline: var(--mx);
+	padding: 0 var(--px);
+
+	--px: var(--space-xs);
+	--py: initial;
+	--mx: auto;
+	--my: initial;
 }

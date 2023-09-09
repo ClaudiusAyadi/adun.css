@@ -1,12 +1,11 @@
 export default {
 	colors: {
-		base: "#f0b4a8",
-		alt: "#0ff",
+		base: "#ffd000",
+		alt: "#9f25ff",
 		action: "#00f",
 	},
 	fontFamily: {
-		"base-font": "Mono",
-		"alt-font": "serif",
+		"base-font": "Effra",
 	},
 	container: {
 		minWidth: 320,

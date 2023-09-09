@@ -2,7 +2,7 @@
 
 /* BASE SETTINGS */
 html {
-	font-size: 62.5%;
+	font-size: 100%;
 }
 
 *,
@@ -14,19 +14,6 @@ html {
 }
 
 body {
-	--bg: var(--action-ultra-dark);
-	--color: var(--alt);
-	--font-family: var(--base-font);
-	--font-weight: var(--400);
-	--font-size: var(--text-m);
-	--line: var(--line-l);
-
-	background-color: var(--bg);
-	color: var(--color);
-	font-family: var(--font-family);
-	font-weight: var(--font-weight);
-	font-size: var(--font-size);
-	line-height: var(--line);
 	min-block-size: 100%;
 	word-wrap: break-word;
 	-webkit-font-smoothing: antialiased;
@@ -34,17 +21,19 @@ body {
 
 /* DEFAULT LINKS */
 a {
-	&:link,
-	&:visited {
-		display: inline-flex;
-		color: currentColor;
-		text-decoration: none;
-		transition: var(--all-3);
-	}
+	--display: inline-flex;
+	--color: currentColor;
+	--text-decoration: none;
+	--transition: var(--all-3);
+
+	display: var(--display);
+	color: var(--color);
+	text-decoration: var(--text-decoration);
+	transition: var(--transition);
 
 	&:hover,
 	&:active {
-		color: inherit;
+		color: var(--color);
 	}
 }
 
@@ -103,10 +92,14 @@ a.clickable-card:after {
 /* OUTLINE */
 :focus,
 button:focus {
-	outline-style: solid;
-	outline-color: var(--alt);
-	outline-inline-size: 0.2rem;
-	outline-offset: 0.2em;
+	--outline-color: var(--alt);
+	--outline-style: solid;
+	--outline-width: 0.2em;
+	--outline-offset: 0.2em;
+	outline-style: var(--outline-style);
+	outline-color: var(--outline-color);
+	outline-width: var(--outline-width);
+	outline-offset: var(--outline-offset);
 }
 
 :focus:not(:focus-visible),

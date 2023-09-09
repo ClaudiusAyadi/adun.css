@@ -1,18 +1,18 @@
 $colors: (
-"base": #f0b4a8,
-"base-hover": #f3c3b9,
-"base-ultra-light": #fef8f6,
-"base-light": #fbece9,
-"base-medium": #f8dad4,
-"base-dark": #a87e76,
-"base-ultra-dark": #785a54,
-"alt": #0ff,
-"alt-hover": #33ffff,
-"alt-ultra-light": #e6ffff,
-"alt-light": #bfffff,
-"alt-medium": #80ffff,
-"alt-dark": #00b3b3,
-"alt-ultra-dark": #008080,
+"base": #ffd000,
+"base-hover": #ffd933,
+"base-ultra-light": #fffae6,
+"base-light": #fff3bf,
+"base-medium": #ffe880,
+"base-dark": #b39200,
+"base-ultra-dark": #806800,
+"alt": #9f25ff,
+"alt-hover": #b251ff,
+"alt-ultra-light": #f5e9ff,
+"alt-light": #e7c9ff,
+"alt-medium": #cf92ff,
+"alt-dark": #6f1ab3,
+"alt-ultra-dark": #501380,
 "action": #00f,
 "action-hover": #3333ff,
 "action-ultra-light": #e6e6ff,
@@ -47,11 +47,38 @@ maxFontSize: 80
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $container: (
 minWidth: 320,
 maxWidth: 1366
 );
 $fontFamily: (
-base-font: Mono,
-alt-font: serif
+base-font: Effra
 );

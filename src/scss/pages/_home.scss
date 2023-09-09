@@ -1,1 +1,30 @@
 /* HOME PAGE STYLES */
+.home {
+	.buttons,
+	.links {
+		.container {
+			--py: var(--section-gap);
+		}
+	}
+
+	.btn-action {
+		--color: var(--white);
+	}
+
+	.btn-black {
+		--color: var(--white);
+
+		&:hover {
+			--color: var(--black);
+		}
+	}
+
+	.btn-white {
+		--border-color: var(--grey-2);
+	}
+
+	[class*="link-"] {
+		--bg: var(--grey-3);
+		padding: 1em;
+	}
+}

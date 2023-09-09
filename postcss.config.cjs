@@ -6,9 +6,13 @@ const cssnano = require("cssnano");
 module.exports = {
 	plugins: [
 		postcss([postcssSass()]).process("src/scss/app.scss"),
-		require("postcss-preset-env")({stage: 1}),
+		require("autoprefixer"),
 		purgeCSS({
-			content: ["./**/*.html"],
+			content: [
+				"./**/*.{html,js,jsx,ts,tsx,php}",
+				"./src/**/*.{html,js,jsx,ts,tsx,php}",
+				"./components/**/*.{html,js,jsx,ts,tsx,php}",
+			],
 		}),
 		cssnano({
 			preset: [

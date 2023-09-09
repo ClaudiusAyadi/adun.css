@@ -27,10 +27,10 @@ $grids: (
 	grid-auto-6: repeat(auto-fit, minmax(min(18.6838340486rem, 100vw - 6rem), 1fr)),
 );
 
-// GRID VARIABLES
+/* GRID VARIABLES */
 @mixin grids {
 	@each $grid, $value in $grids {
-		--#{$grid}: var(--#{$grid});
+		--#{$grid}: #{$value};
 	}
 }
 
@@ -54,3 +54,44 @@ $grids: (
 	}
 }
 @include columns;
+
+.flex {
+	display: flex;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-col-reverse {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.flex-reverse {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+/* QUICK ORDERING PROPERTIES */
+
+.first {
+	order: -1;
+}
+
+.last {
+	order: var(--radius-full);
+}
