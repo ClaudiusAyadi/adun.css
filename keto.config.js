@@ -8,10 +8,6 @@ export default {
 		"base-font": "Mono",
 		"alt-font": "serif",
 	},
-	fontSizes: {
-		minFontSize: 10,
-		maxFontSize: 80,
-	},
 	container: {
 		minWidth: 320,
 		maxWidth: 1366,
