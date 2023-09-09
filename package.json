@@ -39,7 +39,6 @@
 		"postcss": "^8.4.29",
 		"postcss-cli": "^10.1.0",
 		"postcss-preset-env": "^8.5.1",
-		"postcss-pxtorem": "^6.0.0",
 		"postcss-scss": "^4.0.7",
 		"values.js": "^2.1.1"
 	}
