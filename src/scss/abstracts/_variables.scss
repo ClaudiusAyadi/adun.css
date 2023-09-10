@@ -10,12 +10,6 @@
 @use "../layouts/grids" as *;
 
 :root {
-	// 1-STEP VARIABLE LOOP
-	@mixin one-step-loop($map) {
-		@each $map-item, $value in $map {
-			--#{$map-item}: #{$value};
-		}
-	}
 	/* COLOR SYSTEM */
 	@include colors;
 
@@ -36,6 +30,5 @@
 	@include containers;
 	@include radii;
 	@include shadows;
-	@include one-step-loop($cards);
-	@include one-step-loop($transitions);
+	@include transitions
 }

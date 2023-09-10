@@ -1,51 +1,49 @@
-/* ONLY MODIFY IF YOU KNOW WHAT YOU ARE DOING */
-
-$cards: (
-	card-radius: var(--radius-s),
-	card-box-shadow: var(--card-shadow),
-	card-transition: var(--all-5),
-);
-
 /* CARD CLASSES */
 
 [class*="-card"] {
 	width: 100%;
 	position: relative;
 	display: flex;
-	flex-direction: column;
+	flex-direction: var(--flex-direction);
 	background-size: cover;
-	border-radius: var(--card-radius);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow);
 	overflow: hidden;
-	box-shadow: var(--card-box-shadow);
-	transition: var(--card-transition);
-}
+	transition: var(--transition);
 
-[class*="-card__head"] {
-	order: -1;
-	width: 100%;
-	flex: 0 0 auto;
+	--flex-direction: column;
+	--border-radius: var(--radius-m);
+	--shadow: var(--shadow-xl);
 
-	:where(figure) {
-		display: inline-block;
+	[class*="__head"] {
 		width: 100%;
-		height: fit-content;
-		margin: 0;
-		overflow: hidden;
+		flex: 0 0 auto;
 
-		img {
-			position: static;
-			background-size: cover;
-			transition: inherit;
+		figure {
+			display: inline-block;
+			width: 100%;
+			height: fit-content;
+			margin: 0;
+			overflow: hidden;
+
+			img {
+				position: static;
+				background-size: cover;
+				transition: inherit;
+			}
 		}
 	}
-}
 
-[class*="-card__body"] {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 0.4em;
-	padding: var(--space-m);
-	text-align: center;
-	flex-grow: 1;
+	[class*="__body"] {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.4em;
+		padding: var(--padding);
+		text-align: var(--text-align);
+		flex-grow: 1;
+
+		--padding: var(--space-m);
+		--text-align: center;
+	}
 }
