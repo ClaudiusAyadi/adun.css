@@ -1,21 +1,16 @@
 const postcss = require("postcss");
-const postcssSass = require("@csstools/postcss-sass");
-const purgeCSS = require("@fullhuman/postcss-purgecss");
+const sass = require("@csstools/postcss-sass");
+const preset = require("postcss-preset-env");
+const purgecss = require("@fullhuman/postcss-purgecss");
 const cssnano = require("cssnano");
-const pxtorem = require("@minko-fe/postcss-pxtorem");
 
 module.exports = {
 	plugins: [
-		postcss([postcssSass()]).process("src/scss/app.scss"),
-		require("autoprefixer"),
-		pxtorem({
-			rootValue: 16,
-			selectorBlackList: ["some-class"],
-			propList: ["*"],
-			atRules: ["media"],
-			// ...
+		postcss([sass()]).process("src/keto/scss/keto.scss"),
+		preset({
+			stage: 1,
 		}),
-		purgeCSS({
+		purgecss({
 			content: [
 				"./**/*.{html,js,jsx,ts,tsx,php}",
 				"./src/**/*.{html,js,jsx,ts,tsx,php}",

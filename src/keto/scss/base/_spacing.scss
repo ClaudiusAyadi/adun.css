@@ -1,5 +1,6 @@
 /* SPACING SYSTEM */
 $spacing: (
+	gap: 0.5em,
 	space-xxs: var(--text-xxs),
 	space-xs: var(--text-xs),
 	space-s: var(--text-s),
@@ -9,10 +10,7 @@ $spacing: (
 	space-xxl: var(--text-xxl),
 	space-3xl: var(--text-3xl),
 	space-4xl: var(--text-4xl),
-	gap: 0.5em,
-	grid-gap: var(--space-m),
-	block-gap: var(--space-xl),
-	section-gap: var(--space-3xl),
+	space-5xl: var(--text-5xl),
 );
 
 /* "space-" VARIABLES */
@@ -43,6 +41,7 @@ $px: (
 	xxl: var(--space-xxl),
 	3xl: var(--space-3xl),
 	4xl: var(--space-4xl),
+	5xl: var(--space-5xl),
 );
 
 @mixin px {
@@ -109,10 +108,12 @@ $radii: (
 
 // SHADOW MAP
 $shadows: (
-	shadow-s: 0 0.1rem 0.2rem 0,
-	shadow-m: 0 0.2rem 1rem 0,
-	shadow-l: 0 0.5rem 3rem 0,
+	shadow-xs: 0 0.1rem 0.2rem 0,
+	shadow-s: 0 0.2rem 0.5rem,
+	shadow-m: 0 0.5rem 1rem 0,
+	shadow-l: 0 0.1rem 2rem 0,
 	shadow-xl: 0 2rem 4rem -3rem,
+	drop-shadow: drop-shadow(0 1px 2px hsl(0 0% 0%/ 0.1)) drop-shadow(0 1px 1px hsl(0 0% 0%/0.06)),
 );
 
 /* "shadow-" VARIABLES */

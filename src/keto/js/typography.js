@@ -1,5 +1,5 @@
 import fs from "fs";
-import keto from "../../keto.config.js";
+import keto from "../../../keto.config.js";
 
 const fontFamily = keto.fontFamily;
 

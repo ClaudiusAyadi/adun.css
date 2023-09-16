@@ -9,19 +9,9 @@
 	}
 }
 
-/* FONT FAMILY CLASSES */
-@mixin families {
-	@each $font, $family in $fontFamily {
-		.#{$font} {
-			font-family: var(--#{$font});
-		}
-	}
-}
-@include families;
-
 /* FLUID TYPOGRAPHY */
-$min-vp: map-get($container, minWidth) * 1px;
-$max-vp: map-get($container, maxWidth) * 1px;
+$min-vp: map-get($container, minWidth) * 0.1rem;
+$max-vp: map-get($container, maxWidth) * 0.1rem;
 
 @function fluid($min-size, $max-size, $min-vp: $min-vp, $max-vp: $max-vp, $unit: vw) {
 	$slope: math.div($max-size - $min-size, $max-vp - $min-vp);
@@ -33,15 +23,16 @@ $max-vp: map-get($container, maxWidth) * 1px;
 }
 
 $fluidity: (
-	text-xxs: #{fluid(10px, 12px)},
-	text-xs: #{fluid(12px, 14px)},
-	text-s: #{fluid(14px, 16px)},
-	text-m: #{fluid(16px, 18px)},
-	text-l: #{fluid(18px, 20px)},
-	text-xl: #{fluid(20px, 24px)},
-	text-xxl: #{fluid(24px, 32px)},
-	text-3xl: #{fluid(36px, 48px)},
-	text-4xl: #{fluid(52px, 72px)},
+	text-xxs: #{fluid(1rem, 1.2rem)},
+	text-xs: #{fluid(1.2rem, 1.4rem)},
+	text-s: #{fluid(1.4rem, 1.6rem)},
+	text-m: #{fluid(1.6rem, 1.8rem)},
+	text-l: #{fluid(1.8rem, 2.2rem)},
+	text-xl: #{fluid(2.2rem, 2.6rem)},
+	text-xxl: #{fluid(2.6rem, 3.2rem)},
+	text-3xl: #{fluid(3.2rem, 4.8rem)},
+	text-4xl: #{fluid(4.8rem, 7.2rem)},
+	text-5xl: #{fluid(7.2rem, 10.2rem)},
 );
 
 /* "text-" VARIABLES */
@@ -131,20 +122,21 @@ h3,
 h4,
 h5,
 h6 {
-	--font-family: var(--base-font);
+	--font-family: var(--alt-font);
+	--font-weight: var(--weight-900);
 	font-size: var(--font-size);
 	font-family: var(--font-family);
+	font-weight: var(--font-weight);
 	line-height: var(--line);
-	text-rendering: optimizelegibility;
 }
 
 h1 {
-	--font-size: var(--text-3xl);
+	--font-size: var(--text-4xl);
 	--line: var(--line-xs);
 }
 
 h2 {
-	--font-size: var(--text-xxl);
+	--font-size: var(--text-3xl);
 	--line: var(--line-s);
 }
 
