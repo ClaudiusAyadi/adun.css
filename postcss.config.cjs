@@ -6,7 +6,10 @@ const cssnano = require("cssnano");
 
 module.exports = {
 	plugins: [
-		postcss([sass()]).process("src/keto/scss/keto.scss"),
+		postcss([sass()]).process("src/keto/scss/keto.scss", {
+			syntax: require("postcss-scss"),
+			parser: require("postcss-scss"),
+		}),
 		preset({
 			stage: 1,
 		}),
