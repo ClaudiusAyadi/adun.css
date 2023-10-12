@@ -1,55 +1,74 @@
-$transitions: (
-	all-3: all 0.3s ease-in-out,
-	all-5: all 0.5s ease-in-out,
-);
-
-@mixin transitions {
-	@each $trans, $value in $transitions {
-		--#{$trans}: #{$value};
-	}
-}
+@use "sass:list";
+@use "./typography" as *;
 
 /* UTILITY CLASSES */
+
+// 1. POSITION
+$position: "static", "relative", "absolute", "fixed", "sticky";
+
+@mixin positions {
+  @for $i from 1 through length($position) {
+    $step: list.nth($position, $i);
+    .#{$step} {
+      position: #{$step};
+    }
+  }
+}
+@include positions;
+
+// 2. PLACEMENT
+$placement: top, right, bottom, left;
+
+@mixin placements {
+  @for $i from 1 through length($all-steps) {
+    $size: list.nth($all-steps, $i);
+    @for $i from 1 through length($placement) {
+      $step: list.nth($placement, $i);
+      .#{$step}-#{$size} {
+        #{$step}: var(--space-#{$size});
+      }
+    }
+  }
+}
+@include placements;
+
 .uppercase {
-	text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .capitalize {
-	text-transform: capitalize;
+  text-transform: capitalize;
 }
 
-.x-flip,
-.x-flip > div {
-	scale: -1;
+.flip-x,
+.flip-x > div {
+  scale: -1;
+
+  &-hover {
+    &:hover {
+      scale: -1;
+    }
+  }
 }
 
-.x-flip-on-hover,
-.x-flip-on-hover > div {
-	&:hover {
-		scale: -1;
-	}
+.flip-y,
+.flip-y > div {
+  scale: -1;
+
+  &-hover {
+    &:hover {
+      scale: y -1;
+    }
+  }
 }
 
-.y-flip,
-.y-flip > div {
-	scale: y -1;
-}
+.flip-xy,
+.flip-xy > div {
+  scale: -1 -1;
 
-.y-flip-on-hover,
-.y-flip-on-hover > div {
-	&:hover {
-		scale: y -1;
-	}
-}
-
-.xy-flip,
-.xy-flip > div {
-	scale: -1 -1;
-}
-
-.xy-flip-on-hover,
-.xy-flip-on-hover > div {
-	&:hover {
-		scale: -1 -1;
-	}
+  &-hover {
+    &:hover {
+      scale: -1 -1;
+    }
+  }
 }

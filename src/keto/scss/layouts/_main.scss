@@ -1,0 +1,17 @@
+@use "../layouts/breakpoints" as *;
+
+#keto-content {
+	display: block;
+	flex: 1;
+	position: relative;
+	inline-size: 100%;
+	margin-block-end: var(--space-4xl);
+
+	section:first-of-type {
+		margin-block-start: var(--space-4xl);
+	}
+
+	section:not(:first-child) .container {
+		padding-block-start: var(--space-4xl);
+	}
+}

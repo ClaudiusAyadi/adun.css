@@ -36,10 +36,10 @@ $grids: (
 
 /* GRID UTILITY CLASSES */
 @mixin grid-classes {
-	@each $map-item, $value in $grids {
-		.#{$map-item} {
+	@each $grid, $value in $grids {
+		.#{$grid} {
 			display: grid;
-			grid-template-columns: var(--#{$map-item});
+			grid-template-columns: var(--#{$grid});
 		}
 	}
 }
@@ -47,7 +47,7 @@ $grids: (
 
 /* COLUMN COUNTS */
 @mixin columns {
-	@for $i from 1 through 5 {
+	@for $i from 2 through 5 {
 		.col-#{$i} {
 			column-count: #{$i};
 		}
@@ -55,23 +55,29 @@ $grids: (
 }
 @include columns;
 
-.flex {
+/* FLEXBOX */
+.row {
 	display: flex;
 }
 
-.flex-col {
+.row-reverse {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.col {
 	display: flex;
 	flex-direction: column;
 }
 
-.flex-col-reverse {
+.col-reverse {
 	display: flex;
 	flex-direction: column-reverse;
 }
 
-.flex-reverse {
-	display: flex;
-	flex-direction: row-reverse;
+.center-all {
+	align-items: center;
+	justify-content: center;
 }
 
 .align-center {
@@ -93,5 +99,5 @@ $grids: (
 }
 
 .last {
-	order: var(--radius-full);
+	order: 999;
 }

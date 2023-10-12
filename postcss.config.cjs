@@ -10,9 +10,7 @@ module.exports = {
 			syntax: require("postcss-scss"),
 			parser: require("postcss-scss"),
 		}),
-		preset({
-			stage: 1,
-		}),
+		preset(),
 		purgecss({
 			content: [
 				"./**/*.{html,js,jsx,ts,tsx,php}",

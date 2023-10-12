@@ -1,124 +1,175 @@
-/* SPACING SYSTEM */
-$spacing: (
-	gap: 0.5em,
-	space-xxs: var(--text-xxs),
-	space-xs: var(--text-xs),
-	space-s: var(--text-s),
-	space-m: var(--text-m),
-	space-l: var(--text-l),
-	space-xl: var(--text-xl),
-	space-xxl: var(--text-xxl),
-	space-3xl: var(--text-3xl),
-	space-4xl: var(--text-4xl),
-	space-5xl: var(--text-5xl),
-);
+@use "sass:list";
+@use "sass:string";
+@use "./typography" as *;
 
 /* "space-" VARIABLES */
 @mixin spaces {
-	@each $space, $value in $spacing {
-		--#{$space}: #{$value};
-	}
+  @for $i from 1 through length($all-steps) {
+    $step: list.nth($all-steps, $i);
+    --space-#{$step}: var(--text-#{$step});
+  }
 }
 
 /* "space-" CLASSES */
 @mixin spacing {
-	@each $space, $value in $spacing {
-		.#{$space} {
-			gap: var(--#{$space});
-		}
-	}
+  @for $i from 1 through length($all-steps) {
+    $step: list.nth($all-steps, $i);
+    .space-#{$step} {
+      gap: var(--space-#{$step});
+    }
+  }
 }
 @include spacing;
 
 /* PADDING & MARGIN CLASSES */
-$px: (
-	xxs: var(--space-xxs),
-	xs: var(--space-xs),
-	s: var(--space-s),
-	m: var(--space-m),
-	l: var(--space-l),
-	xl: var(--space-xl),
-	xxl: var(--space-xxl),
-	3xl: var(--space-3xl),
-	4xl: var(--space-4xl),
-	5xl: var(--space-5xl),
+@mixin padding {
+  @for $i from 1 through length($all-steps) {
+    $step: list.nth($all-steps, $i);
+    $pad: "pt", "pr", "pb", "pl", "px", "py";
+
+    @for $i from 1 through length($pad) {
+      $item: list.nth($pad, $i);
+      $firstLetter: string.slice($item, 1, 1);
+      $secondLetter: string.slice($item, 2, 2);
+
+      $property: if($firstLetter == "p", "padding", "");
+      $side: if(
+        $secondLetter == "t",
+        "top",
+        if(
+          $secondLetter == "r",
+          "right",
+          if(
+            $secondLetter == "b",
+            "bottom",
+            if(
+              $secondLetter == "l",
+              "left",
+              if(
+                $secondLetter == "x",
+                "inline",
+                if($secondLetter == "y", "block", "")
+              )
+            )
+          )
+        )
+      );
+
+      @if ($property != "" and $side != "") {
+        .#{$item}-#{$step} {
+          #{$property}-#{$side}: var(--space-#{$step});
+        }
+      }
+    }
+  }
+}
+@include padding;
+
+@mixin margin {
+  @for $i from 1 through length($all-steps) {
+    $step: list.nth($all-steps, $i);
+    $mag: "mt", "mr", "mb", "ml", "mx", "my";
+
+    @for $i from 1 through length($mag) {
+      $item: list.nth($mag, $i);
+      $firstLetter: string.slice($item, 1, 1);
+      $secondLetter: string.slice($item, 2, 2);
+
+      $property: if($firstLetter == "m", "margin", "");
+      $side: if(
+        $secondLetter == "t",
+        "top",
+        if(
+          $secondLetter == "r",
+          "right",
+          if(
+            $secondLetter == "b",
+            "bottom",
+            if(
+              $secondLetter == "l",
+              "left",
+              if(
+                $secondLetter == "x",
+                "inline",
+                if($secondLetter == "y", "block", "")
+              )
+            )
+          )
+        )
+      );
+
+      @if ($property != "" and $side != "") {
+        .#{$item}-#{$step} {
+          #{$property}-#{$side}: var(--space-#{$step});
+        }
+      }
+    }
+  }
+}
+@include margin;
+
+/* em MAP */
+$ems: (
+  em-s: 0.25em,
+  em-m: 0.5em,
+  em-l: 1em,
+  em-xl: 2em,
 );
 
-@mixin px {
-	@each $pad, $value in $px {
-		.px-#{$pad} {
-			padding-inline: #{$value};
-		}
-
-		.pt-#{$pad} {
-			padding-block-start: #{$value};
-		}
-
-		.pb-#{$pad} {
-			padding-block-end: #{$value};
-		}
-
-		.mx-#{$pad} {
-			margin-inline: #{$value};
-		}
-
-		.mt-#{$pad} {
-			margin-block-start: #{$value};
-		}
-
-		.mb-#{$pad} {
-			margin-block-end: #{$value};
-		}
-	}
+/* "-em-" VARIABLES */
+@mixin ems {
+  @each $em, $value in $ems {
+    --#{$em}: #{$value};
+  }
 }
-@include px;
 
 // OFFSET MAP
 $offsets: (
-	offset: 8rem,
-	header-height: var(--offset),
-	underline-offset: 0.25em,
-	underline-thickness: 0.2em,
+  offset: 8rem,
+  header-height: var(--offset),
+  underline-offset: 0.25em,
+  underline-thickness: 0.2em,
 );
 
 /* OFFSET VARIABLES */
 @mixin offsets {
-	@each $offset, $value in $offsets {
-		--#{$offset}: #{$value};
-	}
+  @each $offset, $value in $offsets {
+    --#{$offset}: #{$value};
+  }
 }
 
 // RADIUS MAP
 $radii: (
-	radius-xs: 0.25rem,
-	radius-s: 0.5rem,
-	radius-m: 1rem,
-	radius-l: 2rem,
-	radius-50: 50%,
-	radius-100: 100%,
-	radius-full: 999rem,
+  radius-xs: 0.25rem,
+  radius-s: 0.5rem,
+  radius-m: 1rem,
+  radius-l: 2rem,
+  radius-50: 50%,
+  radius-100: 100%,
+  radius-full: 999rem,
 );
 
 /* "radius-" VARIABLES */
 @mixin radii {
-	@each $radius, $value in $radii {
-		--#{$radius}: #{$value};
-	}
+  @each $radius, $value in $radii {
+    --#{$radius}: #{$value};
+  }
 }
 
 // SHADOW MAP
 $shadows: (
-	shadow-xs: 0 0.1rem 0.2rem 0,
-	shadow-s: 0 0.2rem 0.5rem,
-	shadow-m: 0 0.5rem 1rem 0,
-	shadow-l: 0 0.1rem 2rem 0,
-	shadow-xl: 0 2rem 4rem -3rem,
-	drop-shadow: drop-shadow(0 1px 2px hsl(0 0% 0%/ 0.1)) drop-shadow(0 1px 1px hsl(0 0% 0%/0.06)),
+  shadow-xs: 0 0.1rem 0.2rem 0,
+  shadow-s: 0 0.2rem 0.5rem,
+  shadow-m: 0 0.5rem 1rem 0,
+  shadow-l: 0 0.1rem 2rem 0,
+  shadow-xl: 0 2rem 4rem -3rem,
+  drop-shadow: drop-shadow(0 1px 2px hsl(0 0% 0%/ 0.1))
+    drop-shadow(0 1px 1px hsl(0 0% 0%/0.06)),
 );
 
 /* "shadow-" VARIABLES */
 @mixin shadows {
-	@each $shadow, $value in $shadows {
-		--#{$shadow}: #{$value};
-	}
+  @each $shadow, $value in $shadows {
+    --#{$shadow}: #{$value};
+  }
 }

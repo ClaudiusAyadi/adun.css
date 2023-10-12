@@ -1,31 +1,23 @@
 /* DO NOT TOUCH */
 
-@mixin phone {
-	@media only screen and (width <= 550px) {
+$phone: 549.98px;
+$tablet: 767.98px;
+$laptop: 991.98px;
+$desktop: 1023.98px;
+
+@mixin up($width) {
+	@media only screen and (width >= $width) {
 		@content;
 	}
 }
 
-@mixin tablet {
-	@media only screen and (width <= 767px) {
-		@content;
+/* 
+Example:
+
+p {
+	@include up($tablet) {
+	grid-template-columns: var(--grid-4);
 	}
 }
 
-@mixin laptop {
-	@media only screen and (width <= 991px) {
-		@content;
-	}
-}
-
-@mixin desktop {
-	@media only screen and (width >= 1024px) {
-		@content;
-	}
-}
-
-@mixin vp($width) {
-	@media only screen and (width <= $width) {
-		@content;
-	}
-}
+*/

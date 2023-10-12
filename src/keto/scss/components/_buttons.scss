@@ -1,84 +1,77 @@
 @use "../abstracts/workers" as *;
 
-@mixin buttons {
-	@each $color, $value in $colors {
-		// CHECKS
-		@if $color ==
-			"base" or
-			$color ==
-			"alt" or
-			$color ==
-			"action" or
-			$color ==
-			"white" or
-			$color ==
-			"black"
-		{
-			.btn-#{$color} {
-				display: inline-flex;
-				justify-content: center;
-				align-items: center;
-				gap: var(--gap);
-				background-color: var(--bg);
-				color: var(--color);
-				padding: var(--padding);
-				font-weight: var(--font-weight);
-				font-size: var(--font-size);
-				text-align: center;
-				line-height: var(--line);
-				border: var(--border);
-				border-color: var(--border-color);
-				border-radius: var(--border-radius);
-				cursor: var(--cursor);
-				transition: var(--transition);
-				will-change: var(--will-change);
+%btn {
+	--color: inherit;
+	--padding: 1em 1.5em;
+	--font-weight: var(--w-700);
+	--font-size: inherit;
+	--cursor: pointer;
 
-				--bg: var(--#{$color});
-				--color: inherit;
-				--padding: 1em 1.5em;
-				--font-weight: var(--weight-700);
-				--font-size: inherit;
-				--line: var(--line-off);
-				--border: 0.2rem solid;
-				--border-color: var(--#{$color});
-				--border-radius: var(--radius-s);
-				--outline: var(--#{$color});
-				--cursor: pointer;
-				--transition: var(--all-3);
-				--transform: scale(1.05);
-				--will-change: background-color, color, transform;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--em-m);
+	background-color: var(--bg);
+	color: var(--color);
+	padding: var(--padding);
+	font-weight: var(--font-weight);
+	font-size: var(--font-size);
+	text-align: center;
+	text-transform: uppercase;
+	line-height: var(--no-line);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	cursor: var(--cursor);
+	transition: var(--transition);
 
-				&:hover {
-					background-color: var(--bg-hover);
-					color: var(--color);
-					transform: var(--transform);
+	&:hover {
+		--bg: var(--bg-hover);
+		--border-color: var(--bg-hover);
+		transform: var(--transform);
+	}
 
-					--bg-hover: var(--#{$color}-hover);
-					--border-color: var(--#{$color}-hover);
-				}
+	&:focus {
+		--bg: var(--bg-focus);
+		--border-color: var(--bg-focus);
+	}
 
-				&:focus {
-					background-color: var(--bg-focus);
-					outline-style: var(--outline-style);
-					outline-color: var(--outline-color);
-					outline-width: var(--outline-width);
-					outline-offset: var(--outline-offset);
+	&:active {
+		--bg: var(--bg-active);
+		--border-color: var(--bg-active);
+	}
 
-					--bg-focus: var(--#{$color}-hover);
-					--border-color: var(--#{$color}-hover);
-					--outline-color: var(--#{$color}-hover);
-					--outline-style: solid;
-					--outline-width: 0.2rem;
-					--outline-offset: 0.2em;
-				}
-
-				&:active {
-					background-color: var(--bg-active);
-
-					--bg-active: var(--#{$color}-dark);
-				}
-			}
-		}
+	&:disabled,
+	&.disabled,
+	.disabled {
+		opacity: 0.75;
 	}
 }
+
+@mixin buttons {
+	@each $color, $value in $colors {
+		.btn-#{$color} {
+			--bg: var(--#{$color});
+			--border-color: var(--#{$color});
+			--outline: var(--#{$color});
+
+			--bg-hover: var(--#{$color}-hover);
+			--bg-focus: var(--#{$color}-hover);
+			--bg-active: var(--#{$color}-dark);
+
+			@extend %btn;
+		}
+	}
+
+	.btn-outline {
+		--bg: transparent;
+		--border-color: var(--grey-5);
+
+		--bg-hover: var(--action-hover);
+		--bg-focus: var(--action-hover);
+		--bg-active: var(--action-dark);
+
+		@extend %btn;
+	}
+}
+
 @include buttons;

@@ -9,7 +9,7 @@ const fontFamilyMap = `$fontFamily: (\n${Object.entries(fontFamily)
 	.join(",\n")}\n);\n`;
 
 // Read the existing content of workers.scss
-fs.readFile("src/scss/abstracts/_workers.scss", "utf8", (err, data) => {
+fs.readFile("src/keto/scss/abstracts/_workers.scss", "utf8", (err, data) => {
 	if (err) {
 		console.error("Error reading workers.scss:", err);
 		return;
@@ -24,7 +24,7 @@ fs.readFile("src/scss/abstracts/_workers.scss", "utf8", (err, data) => {
 	const newFontFamilyMap = newFontFamily + "\n" + fontFamilyMap;
 
 	// Write the final content back to workers.scss
-	fs.writeFile("src/scss/abstracts/_workers.scss", newFontFamilyMap, (writeErr) => {
+	fs.writeFile("src/keto/scss/abstracts/_workers.scss", newFontFamilyMap, (writeErr) => {
 		if (writeErr) {
 			console.error("Error adding Font Family to workers.scss:", writeErr);
 		} else {

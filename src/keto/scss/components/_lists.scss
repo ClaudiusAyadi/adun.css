@@ -1,8 +1,43 @@
-.list-none {
+@use "sass:list";
+@use "../base/typography" as *;
+
+%list {
+	--align-items: center;
+	--type: none;
+
 	display: flex;
-	align-items: center;
-	list-style-type: none;
-	gap: var(--gap-m);
-	padding: 0;
-	margin: 0;
+	align-items: var(--align-items);
+	list-style-type: var(--type);
 }
+
+%list-col {
+	--flex-direction: column;
+	--justify-content: initial;
+	--align-items: initial;
+
+	@extend %list;
+}
+
+@mixin lists {
+	@for $i from 1 through length($all-steps) {
+		$step: list.nth($all-steps, $i);
+		.list-#{$step} {
+			@extend %list;
+			gap: var(--space-#{$step});
+		}
+	}
+}
+
+@include lists;
+
+@mixin list-cols {
+	@for $i from 1 through length($all-steps) {
+		$step: list.nth($all-steps, $i);
+		.list-col-#{$step} {
+			@extend %list-col;
+			gap: var(--space-#{$step});
+		}
+	}
+}
+
+@include list-cols;

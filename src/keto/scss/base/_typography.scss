@@ -1,115 +1,132 @@
 @use "sass:map";
 @use "sass:math";
+@use "sass:list";
 @use "../abstracts/workers" as *;
 
 // Use $fontFamily from /abstracts/workers
 @mixin fontFamily {
-	@each $font, $family in $fontFamily {
-		--#{$font}: #{$family};
-	}
+  @each $font, $family in $fontFamily {
+    --#{$font}: #{$family};
+  }
 }
 
 /* FLUID TYPOGRAPHY */
-$min-vp: map-get($container, minWidth) * 0.1rem;
-$max-vp: map-get($container, maxWidth) * 0.1rem;
 
-@function fluid($min-size, $max-size, $min-vp: $min-vp, $max-vp: $max-vp, $unit: vw) {
-	$slope: math.div($max-size - $min-size, $max-vp - $min-vp);
-	$scale: calc($slope * 100);
-	$intercept: calc($min-size - $slope * $min-vp);
-	$min-size: $min-size;
-	$max-size: $max-size;
-	@return clamp(#{$min-size}, #{$scale}#{$unit} + #{$intercept}, #{$max-size});
+/* @function - Fluid type generator
+* @author - Claudius A
+* @thanks - https://www.aleksandrhovhannisyan.com/blog/fluid-type-scale-with-css-clamp/#finding-the-preferred-value-for-clamp-with-linear-interpolation
+*/
+
+// Round Function
+@function rnd($number, $places: 0) {
+  $n: 1;
+  @if $places > 0 {
+    @for $i from 1 through $places {
+      $n: $n * 10;
+    }
+  }
+  @return math.div(math.round($number * $n), $n);
 }
 
-$fluidity: (
-	text-xxs: #{fluid(1rem, 1.2rem)},
-	text-xs: #{fluid(1.2rem, 1.4rem)},
-	text-s: #{fluid(1.4rem, 1.6rem)},
-	text-m: #{fluid(1.6rem, 1.8rem)},
-	text-l: #{fluid(1.8rem, 2.2rem)},
-	text-xl: #{fluid(2.2rem, 2.6rem)},
-	text-xxl: #{fluid(2.6rem, 3.2rem)},
-	text-3xl: #{fluid(3.2rem, 4.8rem)},
-	text-4xl: #{fluid(4.8rem, 7.2rem)},
-	text-5xl: #{fluid(7.2rem, 10.2rem)},
-);
+// Fluidity Function
+@function fluid($min: 1.6, $max: 1.8, $mob: 32, $desk: 136.6) {
+  $slope: math.div($max - $min, $desk - $mob);
+  $intercept: rnd($min - $slope * $mob, 2);
+  $slope-vw: rnd($slope * 100, 2);
 
-/* "text-" VARIABLES */
-@mixin fluidType {
-	@each $text, $value in $fluidity {
-		--#{$text}: #{$value};
-	}
+  @return clamp(#{$min}rem, #{$intercept}rem + #{$slope-vw}vw, #{$max}rem);
+}
+
+// Variables
+$base-min: map-get($fontSizes, min) * 0.1;
+$base-max: map-get($fontSizes, max) * 0.1;
+$min-width: map-get($container, minWidth) * 0.1;
+$max-width: map-get($container, maxWidth) * 0.1;
+$scale-min: 1.25;
+$scale-max: 1.33;
+$all-steps: "2xs", "xs", "s", "m", "l", "xl", "2xl", "3xl", "4xl", "5xl";
+$base-index: list.index($all-steps, "m");
+
+// "--text-" VARIABLES
+@mixin types {
+  @for $i from 1 through length($all-steps) {
+    $step: list.nth($all-steps, $i);
+    $power: $i - $base-index;
+    $min: rnd($base-min * math.pow($scale-min, $power), 2);
+    $max: rnd($base-max * math.pow($scale-max, $power), 2);
+    --text-#{$step}: #{fluid($min, $max, $min-width, $max-width)};
+  }
 }
 
 /* "text-" FONT SIZE CLASSES */
 @mixin texts {
-	@each $text, $value in $fluidity {
-		.#{$text} {
-			font-size: var(--#{$text});
-		}
-	}
+  @for $i from 1 through length($all-steps) {
+    $step: list.nth($all-steps, $i);
+    .text-#{$step} {
+      font-size: var(--text-#{$step});
+    }
+  }
 }
 @include texts;
 
 /* FONT WEIGHTS */
 $fontWeights: (
-	weight-100: 100,
-	weight-200: 200,
-	weight-300: 300,
-	weight-400: 400,
-	weight-500: 500,
-	weight-600: 600,
-	weight-700: 700,
-	weight-800: 800,
-	weight-900: 900,
+  w-100: 100,
+  w-200: 200,
+  w-300: 300,
+  w-400: 400,
+  w-500: 500,
+  w-600: 600,
+  w-700: 700,
+  w-800: 800,
+  w-900: 900,
 );
 
 /* FONT WEIGHT VARIABLES */
 @mixin fontWeights {
-	@each $font, $weight in $fontWeights {
-		--#{$font}: #{$weight};
-	}
+  @each $font, $weight in $fontWeights {
+    --#{$font}: #{$weight};
+  }
 }
 
 /* FONT WEIGHT CLASSES */
 @mixin weights {
-	@each $font, $weight in $fontWeights {
-		.#{$font} {
-			font-weight: var(--#{$font});
-		}
-	}
+  @each $font, $weight in $fontWeights {
+    .#{$font} {
+      font-weight: var(--#{$font});
+    }
+  }
 }
 
 @include weights;
 
 /* LINE HEIGHT */
 $lineHeights: (
-	line-off: 1,
-	line-xxs: 1.1,
-	line-xs: 1.2,
-	line-s: 1.3,
-	line-m: 1.4,
-	line-l: 1.5,
-	line-xl: 1.6,
-	line-xxl: 1.7,
-	line-3xl: 1.8,
+  no-line: 1,
+  line-2xs: 1.1,
+  line-xs: 1.2,
+  line-s: 1.3,
+  line-m: 1.4,
+  line-l: 1.5,
+  line-xl: 1.6,
+  line-2xl: 1.7,
+  line-3xl: 1.8,
 );
 
 /* "line-" VARIABLES */
 @mixin lineHeights {
-	@each $lineHeight, $value in $lineHeights {
-		--#{$lineHeight}: #{$value};
-	}
+  @each $lineHeight, $value in $lineHeights {
+    --#{$lineHeight}: #{$value};
+  }
 }
 
 /* "line-" CLASSES */
 @mixin lines {
-	@each $lineHeight, $value in $lineHeights {
-		.#{$lineHeight} {
-			line-height: var(--#{$lineHeight});
-		}
-	}
+  @each $lineHeight, $value in $lineHeights {
+    .#{$lineHeight} {
+      line-height: var(--#{$lineHeight});
+    }
+  }
 }
 
 @include lines;
@@ -122,40 +139,40 @@ h3,
 h4,
 h5,
 h6 {
-	--font-family: var(--alt-font);
-	--font-weight: var(--weight-900);
-	font-size: var(--font-size);
-	font-family: var(--font-family);
-	font-weight: var(--font-weight);
-	line-height: var(--line);
+  --font-family: var(--base-font);
+  --font-weight: var(--w-700);
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  line-height: var(--line);
 }
 
 h1 {
-	--font-size: var(--text-4xl);
-	--line: var(--line-xs);
+  --font-size: var(--text-3xl);
+  --line: var(--line-xs);
 }
 
 h2 {
-	--font-size: var(--text-3xl);
-	--line: var(--line-s);
+  --font-size: var(--text-2xl);
+  --line: var(--line-s);
 }
 
 h3 {
-	--font-size: var(--text-xl);
-	--line: var(--line-s);
+  --font-size: var(--text-xl);
+  --line: var(--line-s);
 }
 
 h4 {
-	--font-size: var(--text-l);
-	--line: var(--line-s);
+  --font-size: var(--text-l);
+  --line: var(--line-m);
 }
 
 h5 {
-	--font-size: var(--text-m);
-	--line: var(--line-s);
+  --font-size: var(--text-m);
+  --line: var(--line-m);
 }
 
 h6 {
-	--font-size: var(--text-s);
-	--line: var(--line-m);
+  --font-size: var(--text-s);
+  --line: var(--line-m);
 }
