@@ -1,30 +1,31 @@
 /* GLOBAL THEMING */
 :root {
-  --bg: var(--white); // Site background
-  --color: var(--black); // Site text color
+	--bg: var(--white); // Site background
+	--color: var(--black); // Site text color
 
-  --font-family: var(--base-font); // Default font family
-  --font-weight: var(--w-400); // Body font weight
-  --font-size: var(--text-m); // Body font size
-  --line-height: var(--line-l); // Default line height
+	--font-family: var(--base-font); // Default font family
+	--font-weight: var(--w-400); // Body font weight
+	--font-size: var(--text-m); // Body font size
+	--line-height: var(--line-l); // Default line height
 
-  // For buttons, cards, etc.
-  --border: var(--border-width) var(--border-style) var(--border-color);
-  --border-width: 0.2rem;
-  --border-style: solid;
-  --border-radius: var(--radius-s);
+	// For buttons, cards, etc.
+	--border: var(--border-width) var(--border-style) var(--border-color);
+	--border-width: 0.2rem;
+	--border-style: solid;
+	--border-radius: var(--radius-s);
 
-  // Input Fields
-  --min-height: initial;
-  --margin: 0 --padding: 0 var(--space-s); // For input fields, buttons, etc.
-  --input-box-shadow: inset 0 1px 2px var(--black-trans-1);
-  --input-box-shadow-hover: 0 0 5px var(--grey-1);
+	// Input Fields
+	--min-height: initial;
+	--margin: 0;
+	--padding: 0 var(--space-s); // For input fields, buttons, etc.
+	--input-box-shadow: inset 0 1px 2px var(--black-trans-1);
+	--input-box-shadow-hover: 0 0 5px var(--grey-1);
 
-  // Site default transform
-  --transform: scale(1.05);
+	// Site default transform
+	--transform: scale(1.05);
 
-  // Site default transition
-  --property: all;
-  --duration: 300ms;
-  --function: ease;
+	// Site default transition
+	--property: all;
+	--duration: 300ms;
+	--function: ease;
 }

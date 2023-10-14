@@ -4,71 +4,71 @@
 /* UTILITY CLASSES */
 
 // 1. POSITION
-$position: "static", "relative", "absolute", "fixed", "sticky";
+$position: ("static", "relative", "absolute", "fixed", "sticky");
 
 @mixin positions {
-  @for $i from 1 through length($position) {
-    $step: list.nth($position, $i);
-    .#{$step} {
-      position: #{$step};
-    }
-  }
+	@for $i from 1 through length($position) {
+		$step: list.nth($position, $i);
+		.#{$step} {
+			position: #{$step};
+		}
+	}
 }
 @include positions;
 
 // 2. PLACEMENT
-$placement: top, right, bottom, left;
+$placement: "top", "right", "bottom", "left";
 
 @mixin placements {
-  @for $i from 1 through length($all-steps) {
-    $size: list.nth($all-steps, $i);
-    @for $i from 1 through length($placement) {
-      $step: list.nth($placement, $i);
-      .#{$step}-#{$size} {
-        #{$step}: var(--space-#{$size});
-      }
-    }
-  }
+	@for $i from 1 through length($all-steps) {
+		$size: list.nth($all-steps, $i);
+		@for $i from 1 through length($placement) {
+			$step: list.nth($placement, $i);
+			.#{$step}-#{$size} {
+				#{$step}: var(--space-#{$size});
+			}
+		}
+	}
 }
 @include placements;
 
 .uppercase {
-  text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 .capitalize {
-  text-transform: capitalize;
+	text-transform: capitalize;
 }
 
 .flip-x,
 .flip-x > div {
-  scale: -1;
+	scale: -1;
 
-  &-hover {
-    &:hover {
-      scale: -1;
-    }
-  }
+	&-hover {
+		&:hover {
+			scale: -1;
+		}
+	}
 }
 
 .flip-y,
 .flip-y > div {
-  scale: -1;
+	scale: -1;
 
-  &-hover {
-    &:hover {
-      scale: y -1;
-    }
-  }
+	&-hover {
+		&:hover {
+			scale: y -1;
+		}
+	}
 }
 
 .flip-xy,
 .flip-xy > div {
-  scale: -1 -1;
+	scale: -1 -1;
 
-  &-hover {
-    &:hover {
-      scale: -1 -1;
-    }
-  }
+	&-hover {
+		&:hover {
+			scale: -1 -1;
+		}
+	}
 }
