@@ -1,16 +1,17 @@
-%card {
+.keto-card {
 	--flex-direction: column-reverse;
 	--align-items: stretch;
-	--position: relative;
 	--text-align: center;
-	--padding: 5px;
+	--pb: 5px;
+	--pi: 5px;
+	--transition: var(--property) var(--duration) var(--function);
 
 	display: flex;
 	flex-direction: var(--flex-direction);
 	align-items: var(--align-items);
-	position: var(--position);
+	position: relative;
 	text-align: var(--text-align);
-	padding: var(--padding);
+	padding: var(--pb) var(--pi);
 	overflow: hidden;
 
 	&__head {
@@ -37,26 +38,5 @@
 		gap: var(--em-m);
 		align-items: var(--align-items);
 		padding: var(--space-s);
-	}
-}
-
-%card-alpha {
-	@extend %card;
-
-	&::before {
-		--bg: linear-gradient(to right, var(--alt), var(--action)) border-box;
-		--mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-		--border-color: transparent;
-
-		content: "";
-		position: absolute;
-		inset: 0;
-		border-radius: var(--border-radius);
-		border: var(--border);
-		background: var(--bg);
-		-webkit-mask: var(--mask);
-		-webkit-mask-composite: xor;
-		mask-composite: exclude;
-		pointer-events: none;
 	}
 }

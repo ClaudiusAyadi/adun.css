@@ -101,7 +101,7 @@ $ems: (
 
 /* Offset Map */
 $offsets: (
-	offset: 8rem,
+	offset: to-rem(80px),
 	header-height: var(--offset),
 	underline-offset: 0.25em,
 	underline-thickness: 0.2em,

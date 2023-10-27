@@ -1,19 +1,22 @@
 /* DO NOT TOUCH */
 
 /* GRID SYSTEM */
-$grids: (
-	grid-1: repeat(1, minmax(0, 1fr)),
-	grid-2: repeat(2, minmax(0, 1fr)),
-	grid-3: repeat(3, minmax(0, 1fr)),
-	grid-4: repeat(4, minmax(0, 1fr)),
-	grid-5: repeat(5, minmax(0, 1fr)),
-	grid-6: repeat(6, minmax(0, 1fr)),
-	grid-7: repeat(7, minmax(0, 1fr)),
-	grid-8: repeat(8, minmax(0, 1fr)),
-	grid-9: repeat(9, minmax(0, 1fr)),
-	grid-10: repeat(10, minmax(0, 1fr)),
-	grid-11: repeat(11, minmax(0, 1fr)),
-	grid-12: repeat(12, minmax(0, 1fr)),
+@mixin grids {
+	@for $i from 1 through 12 {
+		--grid-#{$i}: repeat(#{$i}, minmax(0, 1fr));
+	}
+}
+
+/* GRID UTILITY CLASSES */
+@for $i from 1 through 12 {
+	.grid-#{$i} {
+		display: grid;
+		grid-template-columns: var(--grid-#{$i});
+	}
+}
+
+/* OTHER GRIDS */
+$more-grids: (
 	grid-1-2: minmax(0, 1fr) minmax(0, 2fr),
 	grid-1-3: minmax(0, 1fr) minmax(0, 3fr),
 	grid-2-1: minmax(0, 2fr) minmax(0, 1fr),
@@ -27,52 +30,32 @@ $grids: (
 	grid-auto-6: repeat(auto-fit, minmax(min(18.6838340486rem, 100vw - 6rem), 1fr)),
 );
 
-/* GRID VARIABLES */
-@mixin grids {
-	@each $grid, $value in $grids {
+@mixin more-grids {
+	@each $grid, $value in $more-grids {
 		--#{$grid}: #{$value};
 	}
 }
 
-/* GRID UTILITY CLASSES */
-@mixin grid-classes {
-	@each $grid, $value in $grids {
-		.#{$grid} {
-			display: grid;
-			grid-template-columns: var(--#{$grid});
-		}
+@each $grid, $value in $other-grids {
+	.#{$grid} {
+		display: grid;
+		grid-template-columns: var(#{$grid});
 	}
 }
-@include grid-classes;
 
 /* COLUMN COUNTS */
-@mixin columns {
-	@for $i from 2 through 5 {
-		.col-#{$i} {
-			column-count: #{$i};
-		}
+@for $i from 2 through 5 {
+	.col-#{$i} {
+		column-count: #{$i};
 	}
 }
-@include columns;
 
 /* FLEXBOX */
-.row {
-	display: flex;
-}
+.flex {
+	--direction: row;
 
-.row-reverse {
 	display: flex;
-	flex-direction: row-reverse;
-}
-
-.col {
-	display: flex;
-	flex-direction: column;
-}
-
-.col-reverse {
-	display: flex;
-	flex-direction: column-reverse;
+	flex-direction: var(--direction);
 }
 
 .center-all {
@@ -86,10 +69,6 @@ $grids: (
 
 .justify-center {
 	justify-content: center;
-}
-
-.flex-wrap {
-	flex-wrap: wrap;
 }
 
 /* QUICK ORDERING PROPERTIES */
