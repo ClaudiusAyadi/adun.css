@@ -1,30 +1,39 @@
 /* GLOBAL THEMING */
-:root {
+[data-theme="keto"] {
 	--bg: var(--white); // Site background
 	--color: var(--black); // Site text color
 
-	--font-family: var(--base-font); // Default font family
+	--font-family: var(--base-font); // Body font family
 	--font-weight: var(--w-400); // Body font weight
 	--font-size: var(--text-m); // Body font size
-	--line-height: var(--line-l); // Default line height
+	--line-height: var(--line-l); // Body line height
+}
 
+%border {
 	// For buttons, cards, etc.
 	--border: var(--border-width) var(--border-style) var(--border-color);
 	--border-width: 0.2rem;
 	--border-style: solid;
+	--border-color: unset;
 	--border-radius: var(--radius-s);
+}
 
-	// Input Fields
-	--min-height: initial;
+%input {
+	// Input Fields & Buttons
+	--min-height: unset;
 	--margin: 0;
-	--padding: 0 var(--space-s); // For input fields, buttons, etc.
-	--input-box-shadow: inset 0 1px 2px var(--black-trans-1);
-	--input-box-shadow-hover: 0 0 5px var(--grey-1);
+	--pb: var(--pb);
+	--pi: var(--space-s);
+}
 
-	// Site default transform
+%transform {
+	// Site default button transform
 	--transform: scale(1.05);
+}
 
+%transition {
 	// Site default transition
+	--transition: var(--property) var(--duration) var(--function);
 	--property: all;
 	--duration: 300ms;
 	--function: ease;

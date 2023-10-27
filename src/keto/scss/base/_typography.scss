@@ -1,135 +1,56 @@
 @use "sass:map";
 @use "sass:math";
 @use "sass:list";
-@use "../abstracts/workers" as *;
+@use "../abstracts/functions" as *;
 
-// Use $fontFamily from /abstracts/workers
-@mixin fontFamily {
-  @each $font, $family in $fontFamily {
-    --#{$font}: #{$family};
-  }
+/* FONT SIZES */
+
+// "text-" Font-size Classes
+@for $i from 1 through length($suffix) {
+	$step: list.nth($suffix, $i);
+	.text-#{$step} {
+		font-size: var(--text-#{$step});
+	}
 }
-
-/* FLUID TYPOGRAPHY */
-
-/* @function - Fluid type generator
-* @author - Claudius A
-* @thanks - https://www.aleksandrhovhannisyan.com/blog/fluid-type-scale-with-css-clamp/#finding-the-preferred-value-for-clamp-with-linear-interpolation
-*/
-
-// Round Function
-@function rnd($number, $places: 0) {
-  $n: 1;
-  @if $places > 0 {
-    @for $i from 1 through $places {
-      $n: $n * 10;
-    }
-  }
-  @return math.div(math.round($number * $n), $n);
-}
-
-// Fluidity Function
-@function fluid($min: 1.6, $max: 1.8, $mob: 32, $desk: 136.6) {
-  $slope: math.div($max - $min, $desk - $mob);
-  $intercept: rnd($min - $slope * $mob, 2);
-  $slope-vw: rnd($slope * 100, 2);
-
-  @return clamp(#{$min}rem, #{$intercept}rem + #{$slope-vw}vw, #{$max}rem);
-}
-
-// Variables
-$base-min: map-get($fontSizes, min) * 0.1;
-$base-max: map-get($fontSizes, max) * 0.1;
-$min-width: map-get($container, minWidth) * 0.1;
-$max-width: map-get($container, maxWidth) * 0.1;
-$scale-min: 1.25;
-$scale-max: 1.33;
-$all-steps: "2xs", "xs", "s", "m", "l", "xl", "2xl", "3xl", "4xl", "5xl";
-$base-index: list.index($all-steps, "m");
-
-// "--text-" VARIABLES
-@mixin types {
-  @for $i from 1 through length($all-steps) {
-    $step: list.nth($all-steps, $i);
-    $power: $i - $base-index;
-    $min: rnd($base-min * math.pow($scale-min, $power), 2);
-    $max: rnd($base-max * math.pow($scale-max, $power), 2);
-    --text-#{$step}: #{fluid($min, $max, $min-width, $max-width)};
-  }
-}
-
-/* "text-" FONT SIZE CLASSES */
-@mixin texts {
-  @for $i from 1 through length($all-steps) {
-    $step: list.nth($all-steps, $i);
-    .text-#{$step} {
-      font-size: var(--text-#{$step});
-    }
-  }
-}
-@include texts;
 
 /* FONT WEIGHTS */
-$fontWeights: (
-  w-100: 100,
-  w-200: 200,
-  w-300: 300,
-  w-400: 400,
-  w-500: 500,
-  w-600: 600,
-  w-700: 700,
-  w-800: 800,
-  w-900: 900,
-);
+@for $i from 1 through 9 {
+	$weight: calc($i * 100);
 
-/* FONT WEIGHT VARIABLES */
-@mixin fontWeights {
-  @each $font, $weight in $fontWeights {
-    --#{$font}: #{$weight};
-  }
+	// "w-" Font-weight Classes
+	.w-#{$weight} {
+		font-weight: #{$weight};
+	}
 }
-
-/* FONT WEIGHT CLASSES */
-@mixin weights {
-  @each $font, $weight in $fontWeights {
-    .#{$font} {
-      font-weight: var(--#{$font});
-    }
-  }
-}
-
-@include weights;
 
 /* LINE HEIGHT */
-$lineHeights: (
-  no-line: 1,
-  line-2xs: 1.1,
-  line-xs: 1.2,
-  line-s: 1.3,
-  line-m: 1.4,
-  line-l: 1.5,
-  line-xl: 1.6,
-  line-2xl: 1.7,
-  line-3xl: 1.8,
+$lines: (
+	"no-line": 1,
+	"line-2xs": 1.1,
+	"line-xs": 1.2,
+	"line-s": 1.3,
+	"line-m": 1.4,
+	"line-l": 1.5,
+	"line-xl": 1.6,
+	"line-2xl": 1.7,
+	"line-3xl": 1.8,
+	"line-4xl": 1.9,
+	"line-5xl": 2,
 );
 
-/* "line-" VARIABLES */
-@mixin lineHeights {
-  @each $lineHeight, $value in $lineHeights {
-    --#{$lineHeight}: #{$value};
-  }
-}
-
-/* "line-" CLASSES */
+// "--line-" Root Line-height Variables
 @mixin lines {
-  @each $lineHeight, $value in $lineHeights {
-    .#{$lineHeight} {
-      line-height: var(--#{$lineHeight});
-    }
-  }
+	@each $line, $value in $lines {
+		--#{$line}: #{$value};
+	}
 }
 
-@include lines;
+@each $line, $value in $lines {
+	// "line-" Line-height Classes
+	.#{$line} {
+		line-height: var(--#{$line});
+	}
+}
 
 // DEFAULTS
 [class*="text--"],
@@ -139,40 +60,40 @@ h3,
 h4,
 h5,
 h6 {
-  --font-family: var(--base-font);
-  --font-weight: var(--w-700);
-  font-size: var(--font-size);
-  font-family: var(--font-family);
-  font-weight: var(--font-weight);
-  line-height: var(--line);
+	--font-family: var(--base-font);
+	--font-weight: var(--w-700);
+	font-size: var(--font-size);
+	font-family: var(--font-family);
+	font-weight: var(--font-weight);
+	line-height: var(--line);
 }
 
 h1 {
-  --font-size: var(--text-3xl);
-  --line: var(--line-xs);
+	--font-size: var(--text-3xl);
+	--line: var(--line-xs);
 }
 
 h2 {
-  --font-size: var(--text-2xl);
-  --line: var(--line-s);
+	--font-size: var(--text-2xl);
+	--line: var(--line-s);
 }
 
 h3 {
-  --font-size: var(--text-xl);
-  --line: var(--line-s);
+	--font-size: var(--text-xl);
+	--line: var(--line-s);
 }
 
 h4 {
-  --font-size: var(--text-l);
-  --line: var(--line-m);
+	--font-size: var(--text-l);
+	--line: var(--line-m);
 }
 
 h5 {
-  --font-size: var(--text-m);
-  --line: var(--line-m);
+	--font-size: var(--text-m);
+	--line: var(--line-m);
 }
 
 h6 {
-  --font-size: var(--text-s);
-  --line: var(--line-m);
+	--font-size: var(--text-s);
+	--line: var(--line-m);
 }

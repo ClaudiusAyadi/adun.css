@@ -1,175 +1,149 @@
 @use "sass:list";
 @use "sass:string";
-@use "./typography" as *;
+@use "../abstracts/functions" as *;
 
-/* "space-" VARIABLES */
-@mixin spaces {
-  @for $i from 1 through length($all-steps) {
-    $step: list.nth($all-steps, $i);
-    --space-#{$step}: var(--text-#{$step});
-  }
+/* "space-" Spacing Classes */
+@for $i from 1 through length($suffix) {
+	$step: list.nth($suffix, $i);
+	.space-#{$step} {
+		gap: var(--space-#{$step});
+	}
 }
 
-/* "space-" CLASSES */
-@mixin spacing {
-  @for $i from 1 through length($all-steps) {
-    $step: list.nth($all-steps, $i);
-    .space-#{$step} {
-      gap: var(--space-#{$step});
-    }
-  }
+/* "p{side}-" Padding Classes */
+@for $i from 1 through length($suffix) {
+	$step: list.nth($suffix, $i);
+	$pad: "pt", "pr", "pb", "pl", "px", "py";
+
+	@for $i from 1 through length($pad) {
+		$item: list.nth($pad, $i);
+		$firstLetter: string.slice($item, 1, 1);
+		$secondLetter: string.slice($item, 2, 2);
+
+		$property: if($firstLetter == "p", "padding", "");
+		$side: if(
+			$secondLetter == "t",
+			"top",
+			if(
+				$secondLetter == "r",
+				"right",
+				if(
+					$secondLetter == "b",
+					"bottom",
+					if(
+						$secondLetter == "l",
+						"left",
+						if($secondLetter == "x", "inline", if($secondLetter == "y", "block", ""))
+					)
+				)
+			)
+		);
+
+		@if ($property != "" and $side != "") {
+			.#{$item}-#{$step} {
+				#{$property}-#{$side}: var(--space-#{$step});
+			}
+		}
+	}
 }
-@include spacing;
 
-/* PADDING & MARGIN CLASSES */
-@mixin padding {
-  @for $i from 1 through length($all-steps) {
-    $step: list.nth($all-steps, $i);
-    $pad: "pt", "pr", "pb", "pl", "px", "py";
+/* "m{side}-" Margin Classes */
+@for $i from 1 through length($suffix) {
+	$step: list.nth($suffix, $i);
+	$mag: "mt", "mr", "mb", "ml", "mx", "my";
 
-    @for $i from 1 through length($pad) {
-      $item: list.nth($pad, $i);
-      $firstLetter: string.slice($item, 1, 1);
-      $secondLetter: string.slice($item, 2, 2);
+	@for $i from 1 through length($mag) {
+		$item: list.nth($mag, $i);
+		$firstLetter: string.slice($item, 1, 1);
+		$secondLetter: string.slice($item, 2, 2);
 
-      $property: if($firstLetter == "p", "padding", "");
-      $side: if(
-        $secondLetter == "t",
-        "top",
-        if(
-          $secondLetter == "r",
-          "right",
-          if(
-            $secondLetter == "b",
-            "bottom",
-            if(
-              $secondLetter == "l",
-              "left",
-              if(
-                $secondLetter == "x",
-                "inline",
-                if($secondLetter == "y", "block", "")
-              )
-            )
-          )
-        )
-      );
+		$property: if($firstLetter == "m", "margin", "");
+		$side: if(
+			$secondLetter == "t",
+			"top",
+			if(
+				$secondLetter == "r",
+				"right",
+				if(
+					$secondLetter == "b",
+					"bottom",
+					if(
+						$secondLetter == "l",
+						"left",
+						if($secondLetter == "x", "inline", if($secondLetter == "y", "block", ""))
+					)
+				)
+			)
+		);
 
-      @if ($property != "" and $side != "") {
-        .#{$item}-#{$step} {
-          #{$property}-#{$side}: var(--space-#{$step});
-        }
-      }
-    }
-  }
+		@if ($property != "" and $side != "") {
+			.#{$item}-#{$step} {
+				#{$property}-#{$side}: var(--space-#{$step});
+			}
+		}
+	}
 }
-@include padding;
-
-@mixin margin {
-  @for $i from 1 through length($all-steps) {
-    $step: list.nth($all-steps, $i);
-    $mag: "mt", "mr", "mb", "ml", "mx", "my";
-
-    @for $i from 1 through length($mag) {
-      $item: list.nth($mag, $i);
-      $firstLetter: string.slice($item, 1, 1);
-      $secondLetter: string.slice($item, 2, 2);
-
-      $property: if($firstLetter == "m", "margin", "");
-      $side: if(
-        $secondLetter == "t",
-        "top",
-        if(
-          $secondLetter == "r",
-          "right",
-          if(
-            $secondLetter == "b",
-            "bottom",
-            if(
-              $secondLetter == "l",
-              "left",
-              if(
-                $secondLetter == "x",
-                "inline",
-                if($secondLetter == "y", "block", "")
-              )
-            )
-          )
-        )
-      );
-
-      @if ($property != "" and $side != "") {
-        .#{$item}-#{$step} {
-          #{$property}-#{$side}: var(--space-#{$step});
-        }
-      }
-    }
-  }
-}
-@include margin;
 
 /* em MAP */
 $ems: (
-  em-s: 0.25em,
-  em-m: 0.5em,
-  em-l: 1em,
-  em-xl: 2em,
+	em-s: 0.25em,
+	em-m: 0.5em,
+	em-l: 1em,
+	em-xl: 2em,
 );
 
-/* "-em-" VARIABLES */
+/* "-em-" Root Spacing Variables */
 @mixin ems {
-  @each $em, $value in $ems {
-    --#{$em}: #{$value};
-  }
+	@each $em, $value in $ems {
+		--#{$em}: #{$value};
+	}
 }
 
-// OFFSET MAP
+/* Offset Map */
 $offsets: (
-  offset: 8rem,
-  header-height: var(--offset),
-  underline-offset: 0.25em,
-  underline-thickness: 0.2em,
+	offset: 8rem,
+	header-height: var(--offset),
+	underline-offset: 0.25em,
+	underline-thickness: 0.2em,
 );
 
-/* OFFSET VARIABLES */
+/* Offset Root Variables */
 @mixin offsets {
-  @each $offset, $value in $offsets {
-    --#{$offset}: #{$value};
-  }
+	@each $offset, $value in $offsets {
+		--#{$offset}: #{$value};
+	}
 }
 
 // RADIUS MAP
 $radii: (
-  radius-xs: 0.25rem,
-  radius-s: 0.5rem,
-  radius-m: 1rem,
-  radius-l: 2rem,
-  radius-50: 50%,
-  radius-100: 100%,
-  radius-full: 999rem,
+	radius-xs: to-rem(2.5px),
+	radius-s: to-rem(5px),
+	radius-m: to-rem(10px),
+	radius-l: to-rem(20px),
+	radius-50: 50%,
+	radius-100: 100%,
+	radius-full: to-rem(9999px),
 );
 
 /* "radius-" VARIABLES */
 @mixin radii {
-  @each $radius, $value in $radii {
-    --#{$radius}: #{$value};
-  }
+	@each $radius, $value in $radii {
+		--#{$radius}: #{$value};
+	}
 }
 
 // SHADOW MAP
 $shadows: (
-  shadow-xs: 0 0.1rem 0.2rem 0,
-  shadow-s: 0 0.2rem 0.5rem,
-  shadow-m: 0 0.5rem 1rem 0,
-  shadow-l: 0 0.1rem 2rem 0,
-  shadow-xl: 0 2rem 4rem -3rem,
-  drop-shadow: drop-shadow(0 1px 2px hsl(0 0% 0%/ 0.1))
-    drop-shadow(0 1px 1px hsl(0 0% 0%/0.06)),
+	shadow-xs: 0 to-rem(1px) to-rem(2px) 0 var(--shadow-color),
+	shadow-s: 0 to-rem(2px) to-rem(5px) 0 var(--shadow-color),
+	shadow-m: 0 to-rem(5px) to-rem(10px) 0 var(--shadow-color),
+	shadow-l: 0 to-rem(2px) to-rem(4px) to-rem(-1px) var(--shadow-color),
+	shadow-xl: 0 to-rem(20px) to-rem(40px) to-rem(-30px) var(--shadow-color),
 );
 
 /* "shadow-" VARIABLES */
 @mixin shadows {
-  @each $shadow, $value in $shadows {
-    --#{$shadow}: #{$value};
-  }
+	@each $shadow, $value in $shadows {
+		--#{$shadow}: #{$value};
+	}
 }

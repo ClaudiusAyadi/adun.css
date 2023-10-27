@@ -1,32 +1,29 @@
 /* DO NOT TOUCH */
 @use "../abstracts/workers" as *;
 
-/* CONTAINER WIDTHS */
+/* Container Widths */
 $containers: (
-	container: calc(map-get($container, maxWidth) * 0.1rem),
+	container: to-rem(map-get($container, maxWidth)),
 	container-s: calc(var(--container) * 0.25),
 	container-m: calc(var(--container) * 0.5),
 	container-l: calc(var(--container) * 0.75),
 );
 
-/* "--container-" ROOT VARIABLES */
+/* "--container-" Root Container Variables */
 @mixin containers {
 	@each $container, $value in $containers {
 		--#{$container}: #{$value};
 	}
 }
 
-/*  ".container-" UTILITY CLASSES */
-@mixin container-classes {
-	@each $container, $value in $containers {
-		.#{$container} {
-			max-inline-size: var(--#{$container});
-			inline-size: 100%;
-			margin-inline: auto;
-		}
+/*  "container-" Utility Classes */
+@each $container, $value in $containers {
+	.#{$container} {
+		max-inline-size: var(--#{$container});
+		inline-size: 100%;
+		margin-inline: auto;
 	}
 }
-@include container-classes;
 
 section {
 	max-inline-size: 100%;

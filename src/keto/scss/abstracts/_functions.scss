@@ -1,0 +1,50 @@
+@use "sass:math";
+@use "sass:list";
+@use "workers" as *;
+
+/* FLUID TYPOGRAPHY */
+
+/* @function - Fluid type generator
+* @author - Claudius A
+* @thanks - https://www.aleksandrhovhannisyan.com/blog/fluid-type-scale-with-css-clamp/#finding-the-preferred-value-for-clamp-with-linear-interpolation
+*/
+
+// Round Function
+@function rnd($number, $places: 0) {
+	$n: 1;
+	@if $places > 0 {
+		@for $i from 1 through $places {
+			$n: $n * 10;
+		}
+	}
+	@return math.div(math.round($number * $n), $n);
+}
+
+// px-to-rem Function
+@function to-rem($px) {
+	$rems: rnd(calc(math.div($px, 16px) * 1rem), 2);
+	@return $rems;
+}
+
+$default-min: to-rem(16px);
+$default-max: to-rem(18px);
+$default-mob: to-rem(320px);
+$default-pc: to-rem(1366px);
+
+// Fluidity Function
+@function fluid($min: $default-min, $max: $default-max, $mob: $default-mob, $pc: $default-pc) {
+	$slope: rnd(math.div($max - $min, $pc - $mob), 2);
+	$slope-vw: rnd(calc($slope * 100), 2);
+	$intercept: rnd(calc($min - $slope * $mob), 2);
+	@return clamp(#{$min}, #{$intercept} + #{$slope-vw}vw, #{$max});
+}
+
+// Variables
+$base-min: to-rem(map-get($fontSizes, min));
+$base-max: to-rem(map-get($fontSizes, max));
+$min-width: to-rem(map-get($container, minWidth));
+$max-width: to-rem(map-get($container, maxWidth));
+$scale-min: 1.25;
+$scale-max: 1.33;
+$suffix: "2xs", "xs", "s", "m", "l", "xl", "2xl", "3xl", "4xl", "5xl";
+$index: list.index($suffix, "m");

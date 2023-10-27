@@ -11,13 +11,17 @@ $desktop: 1023.98px;
 	}
 }
 
-/* 
-Example:
-
-p {
-	@include up($tablet) {
-	grid-template-columns: var(--grid-4);
+@mixin down($width) {
+	@media only screen and (width <= $width) {
+		@content;
 	}
 }
 
+/* 
+Example:
+p {
+	@include up($tablet) {
+	column-count: 3
+	}
+}
 */

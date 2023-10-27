@@ -1,36 +1,30 @@
 @use "sass:list";
-@use "./typography" as *;
+@use "../abstracts/functions" as *;
 
 /* UTILITY CLASSES */
 
 // 1. POSITION
 $position: ("static", "relative", "absolute", "fixed", "sticky");
 
-@mixin positions {
-	@for $i from 1 through length($position) {
-		$step: list.nth($position, $i);
-		.#{$step} {
-			position: #{$step};
-		}
+@for $i from 1 through length($position) {
+	$step: list.nth($position, $i);
+	.#{$step} {
+		position: #{$step};
 	}
 }
-@include positions;
 
 // 2. PLACEMENT
 $placement: "top", "right", "bottom", "left";
 
-@mixin placements {
-	@for $i from 1 through length($all-steps) {
-		$size: list.nth($all-steps, $i);
-		@for $i from 1 through length($placement) {
-			$step: list.nth($placement, $i);
-			.#{$step}-#{$size} {
-				#{$step}: var(--space-#{$size});
-			}
+@for $i from 1 through length($suffix) {
+	$size: list.nth($suffix, $i);
+	@for $i from 1 through length($placement) {
+		$step: list.nth($placement, $i);
+		.#{$step}-#{$size} {
+			#{$step}: var(--space-#{$size});
 		}
 	}
 }
-@include placements;
 
 .uppercase {
 	text-transform: uppercase;
@@ -53,11 +47,11 @@ $placement: "top", "right", "bottom", "left";
 
 .flip-y,
 .flip-y > div {
-	scale: -1;
+	scale: none -1;
 
 	&-hover {
 		&:hover {
-			scale: y -1;
+			scale: none -1;
 		}
 	}
 }

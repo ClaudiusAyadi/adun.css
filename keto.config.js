@@ -10,15 +10,18 @@ export default {
 		"base-font": "Effra",
 		"alt-font": "Helvetica",
 	},
+
+	/* Base font-sizes: min - mobile, max - desktop */
 	fontSizes: {
-		// In px but do not include the unit
-		min: 16,
-		max: 18,
+		// Always include the unit (px)
+		min: "16px",
+		max: "18px",
 	},
+
 	/* Website Container Size */
 	container: {
-		// In px but do not include the unit
-		minWidth: 320,
-		maxWidth: 1366,
+		// Always include the unit (px)
+		minWidth: "320px",
+		maxWidth: "1366px",
 	},
 };
