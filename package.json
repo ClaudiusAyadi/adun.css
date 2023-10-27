@@ -6,7 +6,7 @@
 	"description": "Adun is a simple and secure WordPress plugin that houses our Agency's in-house custom design (powered by our popular #1 variable-first atomic design framework - KetoCSS). It also has all our pre and post-deployment snippets.",
 	"main": "index.js",
 	"scripts": {
-		"dev": "node src/keto/js/colors.js & node src/keto/js/container.js & node src/keto/js/typography.js & node src/keto/js/type.js",
+		"keto": "node src/keto/js/colors.js & node src/keto/js/container.js & node src/keto/js/typography.js & node src/keto/js/type.js",
 		"build": "postcss src/keto/scss/keto.scss -o assets/css/keto.min.css --w",
 		"start": "pnpm dev & pnpm build"
 	},
