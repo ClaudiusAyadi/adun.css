@@ -22,7 +22,7 @@
 
 // px-to-rem Function
 @function to-rem($px) {
-	$rems: rnd(calc(math.div($px, 16px) * 1rem), 2);
+	$rems: calc(math.div($px, 16px) * 1rem);
 	@return $rems;
 }
 
@@ -33,7 +33,7 @@ $default-pc: to-rem(1366px);
 
 // Fluidity Function
 @function fluid($min: $default-min, $max: $default-max, $mob: $default-mob, $pc: $default-pc) {
-	$slope: rnd(math.div($max - $min, $pc - $mob), 2);
+	$slope: math.div($max - $min, $pc - $mob);
 	$slope-vw: rnd(calc($slope * 100), 2);
 	$intercept: rnd(calc($min - $slope * $mob), 2);
 	@return clamp(#{$min}, #{$intercept} + #{$slope-vw}vw, #{$max});
@@ -46,5 +46,9 @@ $min-width: to-rem(map-get($container, minWidth));
 $max-width: to-rem(map-get($container, maxWidth));
 $scale-min: 1.25;
 $scale-max: 1.33;
+
 $suffix: "2xs", "xs", "s", "m", "l", "xl", "2xl", "3xl", "4xl", "5xl";
 $index: list.index($suffix, "m");
+
+$placement: "top", "right", "bottom", "left";
+$position: ("static", "relative", "absolute", "fixed", "sticky");

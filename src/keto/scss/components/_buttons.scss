@@ -9,7 +9,7 @@
 	--font-size: inherit;
 	--tt: uppercase;
 	--cursor: pointer;
-	@extend %transform, %transition;
+	@extend %transform;
 
 	display: inline-flex;
 	justify-content: center;
@@ -21,12 +21,12 @@
 	font-weight: var(--font-weight);
 	font-size: var(--font-size);
 	text-align: center;
-	text-transform: uppercase;
+	text-transform: var(--tt);
 	line-height: var(--no-line);
 	border: var(--border);
 	border-radius: var(--border-radius);
 	cursor: var(--cursor);
-	transition: var(--transition);
+	transition: var(--all);
 
 	&:hover {
 		--bg: var(--bg-hover);

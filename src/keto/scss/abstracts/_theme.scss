@@ -6,7 +6,7 @@
 	--font-family: var(--base-font); // Body font family
 	--font-weight: var(--w-400); // Body font weight
 	--font-size: var(--text-m); // Body font size
-	--line-height: var(--line-l); // Body line height
+	--line-height: var(--line-xl); // Body line height
 }
 
 %border {
@@ -14,14 +14,13 @@
 	--border: var(--border-width) var(--border-style) var(--border-color);
 	--border-width: 0.2rem;
 	--border-style: solid;
-	--border-color: unset;
+	--border-color: currentColor;
 	--border-radius: var(--radius-s);
 }
 
 %input {
 	// Input Fields & Buttons
-	--min-height: unset;
-	--margin: 0;
+	--min-height: 2.8em;
 	--pb: var(--pb);
 	--pi: var(--space-s);
 }
@@ -33,8 +32,12 @@
 
 %transition {
 	// Site default transition
-	--transition: var(--property) var(--duration) var(--function);
+	--all: var(--property) var(--duration) var(--function);
+	--normal: var(--duration) var(--function);
 	--property: all;
-	--duration: 300ms;
+	--duration: 500ms;
 	--function: ease;
+	--cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
+	--cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+	--cubic-x: cubic-bezier(0.25, 1, 0.5, 1);
 }

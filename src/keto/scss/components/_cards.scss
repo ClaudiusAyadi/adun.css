@@ -1,18 +1,18 @@
 .keto-card {
-	--flex-direction: column-reverse;
+	--direction: column-reverse;
 	--align-items: stretch;
 	--text-align: center;
 	--pb: 5px;
 	--pi: 5px;
-	--transition: var(--property) var(--duration) var(--function);
 
 	display: flex;
-	flex-direction: var(--flex-direction);
+	flex-direction: var(--direction);
 	align-items: var(--align-items);
 	position: relative;
 	text-align: var(--text-align);
 	padding: var(--pb) var(--pi);
 	overflow: hidden;
+	z-index: 1;
 
 	&__head {
 		overflow: hidden;
@@ -20,9 +20,10 @@
 
 		picture {
 			position: relative;
+			height: 100%;
 
 			img {
-				border-radius: var(--border-radius);
+				border-radius: var(--radius-s);
 				height: 100%;
 			}
 		}
@@ -30,13 +31,12 @@
 
 	&__body {
 		--align-items: flex-start;
+		--gap: var(--em-m);
 
 		flex-grow: 1;
-
 		display: flex;
 		flex-direction: column;
-		gap: var(--em-m);
+		gap: var(--gap);
 		align-items: var(--align-items);
-		padding: var(--space-s);
 	}
 }

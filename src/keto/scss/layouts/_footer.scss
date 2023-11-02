@@ -1,8 +1,6 @@
-/* FOOTER COMPONENT STYLES */
-
 @use "../layouts/breakpoints" as *;
 
-#keto-footer {
+[data-keto="footer"] {
 	max-inline-size: 100%;
 	inline-size: 100%;
 	margin: auto auto 0;
@@ -11,9 +9,8 @@
 	background-color: var(--bg);
 	color: var(--color);
 	position: relative;
-
 	display: flex;
-	flex-shrink: 0;
 	flex-direction: column;
 	gap: var(--gap);
+	flex-shrink: 0;
 }

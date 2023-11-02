@@ -1,8 +1,9 @@
 {
 	"name": "KetoWP",
 	"private": true,
-	"version": "1.0.0",
+	"version": "0.0.0",
 	"type": "module",
+	"homepage": "https://ketocss.adun.studio",
 	"description": "Adun is a simple and secure WordPress plugin that houses our Agency's in-house custom design (powered by our popular #1 variable-first atomic design framework - KetoCSS). It also has all our pre and post-deployment snippets.",
 	"main": "index.js",
 	"scripts": {

@@ -1,11 +1,21 @@
 @use "sass:math";
 @use "sass:list";
 @use "functions" as *;
+@use "workers" as *;
 
-/* One-step map mixin for CSS Variables */
+/* CSS Variable Mixin */
 @mixin variables($map-name) {
 	@each $map-item, $value in $map-name {
 		--#{$map-item}: #{$value};
+	}
+}
+
+/* CSS Classes Mixin */
+@mixin classes($map-name, $property) {
+	@each $map-item, $value in $map-name {
+		.#{$map-item} {
+			#{$property}: var(--#{$map-item});
+		}
 	}
 }
 
@@ -33,5 +43,70 @@
 	@for $i from 1 through length($suffix) {
 		$step: list.nth($suffix, $i);
 		--space-#{$step}: var(--text-#{$step});
+	}
+}
+
+/* GRID SYSTEM */
+@mixin grids {
+	@for $i from 1 through 12 {
+		--grid-#{$i}: repeat(#{$i}, minmax(0, 1fr));
+	}
+}
+
+/* COLOR SYSTEM */
+@mixin colors {
+	// Use colors from abstracts/_workers.scss
+	@each $color, $value in $colors {
+		// HSL SCSS VARIABLES
+		$h: round(hue($value));
+		$s: round(saturation($value));
+		$l: round(lightness($value));
+
+		// CHECKS
+		@if $color ==
+			"base" or
+			$color ==
+			"alt" or
+			$color ==
+			"action" or
+			$color ==
+			"white" or
+			$color ==
+			"black"
+		{
+			/* HSL INDIVIDUAL VARIABLES FOR MAIN COLORS */
+			--#{$color}-h: #{$h};
+			--#{$color}-s: #{$s};
+			--#{$color}-l: #{$l};
+		}
+
+		--#{$color}: #{hsl($h $s $l)};
+
+		// CHECKS
+		@if $color ==
+			"base" or
+			$color ==
+			"alt" or
+			$color ==
+			"action" or
+			$color ==
+			"white" or
+			$color ==
+			"black"
+		{
+			/*  TRANSPARENT VARIANTS FOR MAIN COLORS */
+			@for $i from 1 through 9 {
+				$scale: math.div($i * 10, 100);
+				--#{$color}-trans-#{$i}: #{hsla($h, $s, $l, $scale)};
+			}
+		}
+
+		@if $color == "white" or $color == "black" {
+			$shades: (#{$color}-hover: var(--grey-2), #{$color}-dark: var(--grey-5));
+
+			@each $color, $value in $shades {
+				--#{$color}: #{$value};
+			}
+		}
 	}
 }

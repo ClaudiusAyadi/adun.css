@@ -16,7 +16,7 @@ html {
 }
 
 body {
-	@extend %theme;
+	@extend %theme, %transition;
 
 	display: flex;
 	flex-direction: column;
@@ -30,98 +30,98 @@ body {
 	line-height: var(--line-height);
 	word-wrap: break-word;
 	text-rendering: optimizelegibility;
-	-webkit-font-smoothing: antialiased;
+	scroll-behavior: smooth;
+
+	#root {
+		display: flex;
+		flex-direction: column;
+	}
 }
 
 /* INPUT DEFAULT SETTINGS */
-input[type="email"],
-input[type="search"],
-input[type="number"],
-input[type="url"],
-input[type="tel"],
-input[type="text"],
-textarea {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-}
+%all-inputs {
+	@extend %input;
 
-/* CHROME, SAFARI, EDGE, OPERA */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-}
-
-/* FIREFOX */
-input[type="number"] {
-	-moz-appearance: textfield;
-}
-
-input[type="email"],
-input[type="date"],
-input[type="search"],
-input[type="number"],
-input[type="text"],
-input[type="tel"],
-input[type="url"],
-input[type="password"],
-textarea {
-	--min-height: 2.8em;
-
+	font: inherit;
+	text-align: inherit;
+	background-color: var(--bg);
+	color: inherit;
 	border: var(--border);
 	border-radius: var(--border-radius);
-	padding: var(--padding);
-	min-height: var(--min-height);
+	outline-offset: var(--underline-offset);
+	padding: var(--pb) var(--pi);
+	min-block-size: var(--min-height);
 	max-width: 100%;
 	width: 100%;
 	vertical-align: middle;
-	box-shadow: var(--input-box-shadow);
-	transition: var(--transition);
+	transition: var(--all);
+	cursor: default;
 }
 
-input[type="email"]:focus,
-input[type="search"]:focus,
-input[type="number"]:focus,
-input[type="tel"]:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-textarea:focus,
-select:focus {
-	box-shadow: var(--input-box-shadow-hover);
-	outline: 0;
+input {
+	@extend %all-inputs;
+
+	&[type="number"] {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+
+	/* CHROME, SAFARI, EDGE, OPERA */
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+	}
+
+	/* FIREFOX */
+	&[type="number"] {
+		-moz-appearance: textfield;
+	}
+}
+
+::-webkit-scrollbar {
+	inline-size: 0.625rem;
+	block-size: 0.3125rem;
+}
+
+::-webkit-scrollbar-track {
+	background-color: var(--black-trans-9);
+}
+::-webkit-scrollbar-thumb {
+	background-color: var(--black-trans-8);
+
+	&:hover {
+		background-color: var(--black-trans-7);
+	}
+}
+
+textarea {
+	@extend %all-inputs;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
 [type="submit"],
 [type="button"],
 [role="button"],
 [type="reset"] {
-	--border: 0;
-
 	cursor: pointer;
-	min-height: var(--min-height);
-	background-color: var(--bg);
-	border: var(--border);
-	padding: var(--padding);
-	font-size: inherit;
 }
 
-input:not([type="submit"], [type="button"], [role="button"], [type="reset"]),
 option,
-textarea,
 optgroup,
 ::placeholder {
 	font: inherit;
 	text-align: inherit;
 	color: inherit;
-	cursor: default;
 }
 
 select {
 	--bg: transparent;
 	--select-bg: linear-gradient(45deg, transparent 50%, var(--grey-5) 0),
 		linear-gradient(135deg, var(--grey-5) 50%, transparent 0);
-	--border-color: var(--grey-5);
-	--border-width: 1px;
 	--min-height: auto;
 
 	appearance: none;
@@ -135,15 +135,16 @@ select {
 	font: inherit;
 	text-align: inherit;
 	vertical-align: middle;
-	box-shadow: var(--input-box-shadow);
-	transition: var(--transition);
+	box-shadow: var(--shadow-s);
+	transition: var(--all);
 
 	background-color: var(--bg);
 	color: inherit;
 	background-image: var(--select-bg);
-	background-position: calc(100% - 20px) calc(50% + 2px), calc(100% - 16px) calc(50% + 2px);
+	background-position: calc(100% - 1.25rem) calc(50% + 0.125rem),
+		calc(100% - 1rem) calc(50% + 0.125rem);
 	background-repeat: no-repeat;
-	background-size: 4px 4px, 4px 4px;
+	background-size: 0.25rem 0.25rem, 0.25rem 0.25rem;
 }
 
 audio,
@@ -151,29 +152,33 @@ canvas,
 embed,
 iframe,
 object,
-picture,
 img,
-svg,
 video {
 	display: inline-block;
 	font: inherit;
 	color: inherit;
 	vertical-align: middle;
-	height: auto;
-	width: 100%;
-	max-width: 100%;
+	inline-size: 100%;
+	block-size: auto;
+	max-inline-size: 100%;
 }
 
-.iconify,
-svg.iconify {
-	--font-size: inherit;
+picture {
+	display: flex;
+	inline-size: 100%;
+	block-size: 100%;
+	max-inline-size: 100%;
+}
 
+.iconify {
+	--font-size: var(--text-xl);
+
+	pointer-events: none;
+	display: flex;
+	font: inherit;
 	font-size: var(--font-size);
 	color: var(--color);
-}
-
-figure {
-	margin: 0;
+	vertical-align: middle;
 }
 
 ul,
@@ -189,16 +194,35 @@ table {
 	border-collapse: collapse;
 }
 
+/* DEFAULT BUTTONS */
+button {
+	--bg: transparent;
+	@extend %border;
+	--border: 0;
+
+	display: inline-flex;
+	background-color: var(--bg);
+	color: var(--color);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	cursor: pointer;
+}
+
 /* DEFAULT LINKS */
 a {
 	--color: currentColor;
-	--text-decoration: none;
-	--transition: inherit;
+	--td: none;
 
 	display: inline-flex;
 	color: var(--color);
-	text-decoration: var(--text-decoration);
-	transition: var(--transition);
+	text-decoration: var(--td);
+	transition: inherit;
+
+	&.underline {
+		--td: underline;
+
+		text-underline-offset: var(--underline-offset);
+	}
 
 	&:hover,
 	&:active {
@@ -206,6 +230,7 @@ a {
 	}
 }
 
+/* CLICKABLE PARENT/CARD */
 .clickable-parent {
 	position: relative;
 
@@ -221,14 +246,14 @@ a {
 	&:focus-within {
 		--focus-color: var(--base);
 
-		outline: 2px solid var(--focus-color);
+		outline: 0.125rem solid var(--focus-color);
 
 		:focus {
 			outline: none;
 		}
 
 		button:focus-visible {
-			outline: 2px solid var(--focus-color);
+			outline: 0.125rem solid var(--focus-color);
 		}
 	}
 }
@@ -259,6 +284,7 @@ a {
 	--clip-path: inset(50%);
 	--bg: transparent;
 	--color: inherit;
+	--duration: 250ms;
 
 	position: absolute;
 	top: var(--space-s);
@@ -283,7 +309,7 @@ a {
 	word-wrap: normal !important;
 	overflow-wrap: normal !important;
 	overflow: hidden !important;
-	transition: var(--transition);
+	transition: var(--normal);
 
 	&:focus {
 		--inline-size: auto;

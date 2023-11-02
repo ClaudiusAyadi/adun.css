@@ -1,0 +1,153 @@
+@use "../layouts/breakpoints" as *;
+
+.keto-swipe {
+	display: flex;
+	inline-size: 100%;
+	block-size: 100vw;
+	max-block-size: 37.5rem;
+
+	&.swipe-y {
+		touch-action: pan-y;
+	}
+
+	.swipe-container {
+		position: relative;
+		inline-size: 100%;
+		block-size: 100%;
+		backface-visibility: hidden;
+		isolation: isolate;
+
+		.swipe {
+			--duration: 750ms;
+			--function: ease-in-out;
+
+			display: flex;
+			flex: 1;
+			position: absolute;
+			top: 0;
+			left: 0;
+			inline-size: 100%;
+			block-size: 100%;
+			overflow: hidden;
+			visibility: hidden;
+			opacity: 0;
+			pointer-events: none;
+			transform: scale(0.85);
+			transition: var(--normal);
+			z-index: 1;
+
+			&[aria-hidden="false"] {
+				--duration: 750ms;
+				--function: ease-in-out;
+
+				visibility: visible;
+				opacity: 1;
+				pointer-events: visible;
+				transform: scale(1);
+				transition: var(--normal);
+			}
+
+			img {
+				object-fit: cover;
+				object-position: 50% 0%;
+				height: 100%;
+			}
+
+			.hero-content {
+				position: absolute;
+				inline-size: 100%;
+				block-size: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flexstart;
+				gap: var(--em-m);
+				padding: var(--space-4xl) var(--space-s);
+
+				@include up($laptop) {
+					padding-inline: var(--space-4xl);
+				}
+
+				h1 {
+					max-inline-size: 15ch;
+				}
+
+				.description {
+					max-inline-size: 45ch;
+					color: var(--grey-3);
+					font-size: var(--text-l);
+				}
+
+				.price {
+					display: flex;
+					gap: var(--em-s);
+					align-items: center;
+					font-weight: var(--w-600);
+				}
+
+				.btn {
+					--border-radius: var(--radius-s);
+					--color: var(--white);
+					--font-size: var(--text-l);
+					--tt: capitalize;
+
+					max-inline-size: max-content;
+				}
+			}
+		}
+	}
+
+	.swipe-arrows {
+		--top: auto;
+		--right: 1em;
+		--bottom: 1em;
+		--left: auto;
+		--translate: calc(var(--right) * -1), calc(var(--bottom) * -1);
+
+		position: absolute;
+		inset: var(--top) var(--right) var(--bottom) var(--left);
+		transform: var(--translate);
+		display: flex;
+		justify-content: space-between;
+		gap: var(--space-s);
+		max-inline-size: 7.5rem;
+		margin-inline: auto;
+
+		.swipe-arrow {
+			--duration: 750ms;
+			--function: ease-in-out;
+			--bg: var(--base-medium);
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			visibility: hidden;
+			opacity: 0;
+			transform: translateY(calc(100% - var(--bottom)));
+			transition: var(--all);
+			z-index: 2;
+
+			&:hover,
+			&:focus-visible {
+				background-color: var(--base);
+
+				.iconify {
+					--color: var(--base-ultra-light);
+				}
+			}
+
+			.iconify {
+				--font-size: var(--text-3xl);
+				--color: var(--base);
+			}
+		}
+	}
+
+	&:hover {
+		.swipe-arrow {
+			visibility: visible;
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}

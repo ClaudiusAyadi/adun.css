@@ -1,15 +1,10 @@
 /* DO NOT TOUCH */
 
+@use "map" as *;
 @use "mixins" as *;
 @use "workers" as *;
 @use "../base/colors" as *;
-@use "../base/typography" as *;
-@use "../base/spacing" as *;
 @use "../base/utilities" as *;
-@use "../components/buttons" as *;
-@use "../components/cards" as *;
-@use "../layouts/containers" as *;
-@use "../layouts/grids" as *;
 
 :root {
 	/* COLOR SYSTEM */
@@ -19,19 +14,22 @@
 	@include variables($fontFamily);
 	@include types;
 	@include weights;
-	@include lines;
+	@include variables($lines);
 
 	/* SPACING SYSTEM */
 	@include spaces;
-	@include ems;
+	@include variables($ems);
 
 	/* GRID SYSTEM */
 	@include grids;
-	@include more-grids;
+	@include variables($more-grids);
 
 	/* UTILITY SYSTEM */
-	@include offsets;
-	@include containers;
-	@include radii;
-	@include shadows;
+	@include variables($offsets);
+	@include variables($containers);
+	@include variables($radii);
+	@include variables($shadows);
 }
+
+@include classes($lines, line-height);
+@include classes($radii, border-radius);
