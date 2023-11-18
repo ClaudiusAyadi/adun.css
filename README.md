@@ -1,10 +1,14 @@
 # KetoCSS
 
-**_The super-performant, variable-based, mobile-first, stack-agnostic, lean atomic design framework!_**
+**_The super-performant, variable-based, mobile-first, stack-agnostic (refactoring towards React since its my main stack now), lean atomic design framework!_**
 
 ---
 
 This is my personal CSS Framework or project starter kit based on SASS (SCSS) and CSS Variables. This Framework is heavily inspired by `ACSS` ([Automatic CSS by Kevin Geary](https://automaticcss.com/)). It is the second version of my former SASS Starter Template. It simply shows my learning growth. So, it will always be a WIP (work-in-progress).
+
+This framework is meant to express simplicity and speed, helping devs to quickly start designing their apps.
+
+If you are here, I would love your contributions no matter how little. The goal is to have a flexible CSS Framework that gives us needed utility classes without clogging up our HTML like TailwindCSS, and still allows unlimited freedom to use custom BEM classes powered by the keto-variables.
 
 ### FEATURES
 
@@ -18,32 +22,36 @@ The framework includes classes for common CSS rules (e.g. grids, flex, column-co
 2. Install all dependencies:
 
 ```bash
-pnpm install
+yarn install
 ```
 
 3. Customize and make it yours:
 
+You have two files to edit here _(These are the only files you should modify)_.
+
 ```bash
-edit keto.config.js
-edit abstract/theme.scss
+edit the variables in _global.scss
+edit _fonts.scss and copy your fonts into the fonts folder
 ```
 
 4. Start up your project:
 
 ```bash
-pnpm start
+yarn dev
 ```
 
 5. Build away 🎉
 
 PostCSS handles everything and you don't have to do any extra configuration.
 
-_You can use `npm` too._
+_You can use `npm or pnpm` too._
 
 <br>
 
-**NOTE: Only used classes are compiled to the final output CSS.**
+**NOTE: PurgeCSS ensures that only used classes are compiled in the final build.**
 
-**Always check back for the newest updates.**
+**I assume you use Vite.js for all your React project.**
+
+**Always check back for the newest updates. I'm working on creating React components based on the framework that anyone can easily copy and use.**
 
 **Want to contribute? Let me know, please.**
