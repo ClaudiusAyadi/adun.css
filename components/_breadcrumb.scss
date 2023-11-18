@@ -1,0 +1,18 @@
+.breadcrumb {
+	ul {
+		display: flex;
+		align-items: center;
+		gap: var(--em-2);
+	}
+
+	li {
+		a,
+		span {
+			opacity: 0.35;
+		}
+
+		a:hover {
+			opacity: 1;
+		}
+	}
+}

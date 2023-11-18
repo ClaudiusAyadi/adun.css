@@ -1,40 +1,40 @@
 {
-	"name": "KetoWP",
-	"private": true,
-	"version": "0.0.0",
+	"name": "ketocss",
+	"author": "Claudius A.",
 	"type": "module",
-	"homepage": "https://ketocss.adun.studio",
-	"description": "Adun is a simple and secure WordPress plugin that houses our Agency's in-house custom design (powered by our popular #1 variable-first atomic design framework - KetoCSS). It also has all our pre and post-deployment snippets.",
-	"main": "index.js",
-	"scripts": {
-		"keto": "node src/keto/js/colors.js & node src/keto/js/container.js & node src/keto/js/typography.js & node src/keto/js/type.js",
-		"build": "postcss src/keto/scss/keto.scss -o assets/css/keto.min.css --w",
-		"start": "pnpm dev & pnpm build"
+	"version": "1.0.0",
+	"license": "MIT",
+	"description": "The #1 variable-first atomic design framework. It also has all our pre and post-deployment snippets.",
+	"homepage": "https://github.com/ClaudiusAyadi/ketoCSS",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ClaudiusAyadi/ketoCSS.git"
 	},
 	"keywords": [
-		"ketoCSS",
-		"adun.studio",
-		"bricks builder",
-		"bricks child theme",
+		"css",
 		"sass",
-		"ecommerce",
+		"custom properties",
+		"variables",
+		"utilities",
 		"modern css",
 		"responsive design",
-		"postcss-purgecss",
+		"gradients",
+		"flexbox",
+		"grid",
+		"ketoCSS",
+		"adun.studio",
 		"sass-starter-template",
 		"postcss",
-		"postcss-sass",
-		"cssnano",
+		"postcss-purgecss",
 		"postcss-preset-env",
-		"grid",
-		"flexbox"
+		"cssnano"
 	],
-	"author": "Claudius A.",
-	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ClaudiusAyadi/ketoCSS/issues",
+		"email": "grow@adun.studio"
+	},
 	"browserslist": [
-		">0.2%",
-		"last 2 versions",
-		"not dead"
+		"defaults"
 	],
 	"devDependencies": {
 		"@fullhuman/postcss-purgecss": "^5.0.0",
