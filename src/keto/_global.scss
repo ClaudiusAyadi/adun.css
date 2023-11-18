@@ -36,13 +36,13 @@ $warning: #ffc10a;
 // For these settings below, it is advised you use KetoCSS variables
 
 // WEBSITE BODY SETTINGS
-$background-color: var(--white);
+$background-color: var(--black);
 $font-family: var(--base-font);
 $font-size: var(--text-m);
 $font-weight: var(--w-400);
 $header-height: 80px;
 $line-height: var(--line-xl);
-$text-color: var(--black);
+$text-color: var(--color);
 
 // HEADINGS (Default h1 - h6 settings)
 $heading-font-family: var(--alt-font);
