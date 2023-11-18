@@ -1,8 +1,8 @@
 {
 	"name": "ketocss",
 	"author": "Claudius A.",
-	"type": "module",
 	"version": "1.0.0",
+	"type": "module",
 	"license": "MIT",
 	"description": "The #1 variable-first atomic design framework. It also has all our pre and post-deployment snippets.",
 	"homepage": "https://github.com/ClaudiusAyadi/ketoCSS",
