@@ -20,7 +20,7 @@ The framework includes classes for common CSS rules (e.g. grids, flex, column-co
 
 1. Clone the repo or download the zip file and extract it.
 2. Copy the `devDependencies` into your project package.json and the `postcss.config.cjs` to your project root.
-3. Delete the `package.json`, `.gitignore`, and `README.md` here.
+3. Move the `keto` folder into your project and delete everything else here.
 4. Install all dependencies:
 
 ```bash
@@ -34,7 +34,7 @@ You have two files to edit here _(These are the only files you should modify)_.
 ```bash
 edit the variables in _global.scss
 edit _fonts.scss and copy your fonts into the fonts folder
-import keto.scss into your main.jsx
+import "./keto/keto.scss" into your main.jsx or layout.jsx
 ```
 
 6. Start up your project:
@@ -53,7 +53,7 @@ _You can use `npm or pnpm` too._
 
 **NOTE: PurgeCSS ensures that only used classes are compiled in the final build.**
 
-**I assume you use Vite.js for all your React project. But the setup is the same for Next.js**
+**I assume you use Vite.js for all your React project. The setup is the same for Next.js**
 
 **Always check back for the newest updates. I'm working on creating React components based on the framework that anyone can easily copy and use.**
 
