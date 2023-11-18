@@ -14,7 +14,10 @@ If you are here, I would love your contributions no matter how little. The goal 
 
 The framework includes classes for common CSS rules (e.g. grids, flex, column-counts, buttons, font-related classes, etc.), and tons of readily available CSS variables for nearly every property you would need in your projects - global (root) and local (element, e.g. buttons) scoped.
 
+Best of it, KetoCSS automatically generates all your color tints, shades, and transparent variants, and gives you a well-balanced theme to work with.
+
 **This is a work in progress. If you notice any bug, please let me know**
+**All suggestion and feature requests are welcomed too.**
 
 ## GETTING STARTED
 
