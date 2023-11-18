@@ -1,0 +1,15 @@
+// FONT WEIGHT "--w-" ROOT VARIABLES
+html {
+	@for $i from 1 through 9 {
+		$weight: calc($i * 100);
+		--w-#{$weight}: #{$weight};
+	}
+}
+
+//  FONT WEIGHT ".w-" CLASSES
+@for $i from 1 through 9 {
+	$weight: calc($i * 100);
+	.w-#{$weight} {
+		font-weight: #{$weight};
+	}
+}

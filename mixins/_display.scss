@@ -1,0 +1,33 @@
+@use "sass:list";
+@use "../maps/lists" as *;
+
+// DISPLAY CLASSES
+@for $i from 1 through length($displays) {
+	$display: list.nth($displays, $i);
+	.#{$display} {
+		display: #{$display};
+	}
+}
+
+// DIRECTION  CLASSES
+@for $i from 1 through length($directions) {
+	$direction: list.nth($directions, $i);
+	.#{$direction} {
+		flex-direction: #{$direction};
+	}
+}
+
+@for $i from 1 through length($alignments) {
+	$alignment: list.nth($alignments, $i);
+	$prefix: nth($alignment-prefix, $i);
+
+	// JUSTIFY-CONTENT ALIGNMENT  CLASSES
+	.j-#{$prefix} {
+		justify-content: #{$alignment};
+	}
+
+	// ALIGN-ITEMS ALIGNMENT  CLASSES
+	.a-#{$prefix} {
+		align-items: #{$alignment};
+	}
+}

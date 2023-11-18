@@ -1,0 +1,8 @@
+/* DO NOT TOUCH */
+
+/* COLUMN COUNTS */
+@for $i from 2 through 5 {
+	.col-#{$i} {
+		column-count: #{$i};
+	}
+}

@@ -1,0 +1,9 @@
+@use "../global" as *;
+
+// INPUTS & BUTTONS MAP
+$inputs: (
+	input-shadow: $input-shadow,
+	min-height: $min-height,
+	pad-x: $padding-inline,
+	pad-y: $padding-block,
+) !default;

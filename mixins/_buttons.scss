@@ -1,0 +1,112 @@
+@use "variables" as *;
+@use "../maps/button" as *;
+@use "../maps/palette" as *;
+
+.btn {
+	@include variables($btn);
+
+	align-items: center;
+	background: var(--bg);
+	border: var(--border-width) var(--border-style) var(--border-color);
+	border-radius: var(--border-radius);
+	color: var(--color);
+	cursor: var(--cursor);
+	display: inline-flex;
+	font-size: var(--font-size);
+	font-weight: var(--font-weight);
+	justify-content: center;
+	line-height: var(--no-line);
+	letter-spacing: 0;
+	min-inline-size: var(--min-width);
+	padding-block: var(--pad-y);
+	padding-inline: var(--pad-x);
+	text-align: center;
+	text-decoration: var(--td);
+	text-transform: var(--tt);
+	transition: var(--transition);
+
+	&:hover {
+		--bg: var(--bg-hover);
+		--border-color: var(--bg-hover);
+	}
+
+	&:focus {
+		--bg: var(--bg-focus);
+		--border-color: var(--bg-focus);
+	}
+
+	&:active {
+		--bg: var(--bg-active);
+		--border-color: var(--bg-active);
+	}
+
+	&:disabled,
+	&.disabled,
+	&[disabled] {
+		opacity: 0.6;
+	}
+}
+
+@each $color, $value in $palette {
+	.btn--#{$color} {
+		--bg: var(--#{$color});
+		--border-color: var(--#{$color});
+		--bg-hover: var(--#{$color}-hover);
+		--bg-focus: var(--#{$color}-dark);
+		--bg-active: var(--#{$color}-dark);
+	}
+
+	.btn--#{$color}-outline {
+		--color: var(--#{$color}-dark);
+		--bg: transparent;
+		--border-color: var(--#{$color});
+		--bg-hover: var(--#{$color}-hover);
+		--bg-focus: var(--#{$color}-dark);
+		--bg-active: var(--#{$color}-dark);
+	}
+}
+
+@each $color, $value in $neutrals {
+	.btn--#{$color} {
+		--bg: var(--#{$color});
+		--border-color: var(--#{$color});
+		--bg-hover: var(--#{$color}-hover);
+		--bg-focus: var(--#{$color}-dark);
+		--bg-active: var(--#{$color}-dark);
+	}
+
+	.btn--#{$color}-outline {
+		--color: var(--#{$color}-dark);
+		--bg: transparent;
+		--border-color: var(--#{$color});
+		--bg-hover: var(--#{$color}-hover);
+		--bg-focus: var(--#{$color}-dark);
+		--bg-active: var(--#{$color}-dark);
+	}
+}
+
+@each $color, $value in $contextual {
+	.btn--#{$color} {
+		--bg: var(--#{$color});
+		--border-color: var(--#{$color});
+		--bg-hover: var(--#{$color}-hover);
+		--bg-focus: var(--#{$color}-dark);
+		--bg-active: var(--#{$color}-dark);
+	}
+
+	.btn--#{$color}-outline {
+		--color: var(--#{$color}-dark);
+		--bg: transparent;
+		--border-color: var(--#{$color});
+		--bg-hover: var(--#{$color}-hover);
+		--bg-focus: var(--#{$color}-dark);
+		--bg-active: var(--#{$color}-dark);
+	}
+}
+
+.btn--outline {
+	--bg: transparent;
+	--border-color: var(--outline-color);
+	--bg-hover: var(--outline-color);
+	--bg-active: var(--outline-color);
+}

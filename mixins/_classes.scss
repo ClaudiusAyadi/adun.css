@@ -1,0 +1,8 @@
+// CSS CLASSES MIXIN
+@mixin classes($map-name, $property) {
+	@each $map-item, $value in $map-name {
+		.#{$map-item} {
+			#{$property}: var(--#{$map-item});
+		}
+	}
+}

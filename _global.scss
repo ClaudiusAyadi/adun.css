@@ -1,0 +1,93 @@
+// GLOBAL SETTINGS
+//
+// Define your global tokens/variables here. This is the only SCSS file you should touch.
+
+// Customize the framework and make it yours.
+//
+// Always include the PX unit for values having it.
+
+// VIEWPORT (Set your website dimensions)
+$max-viewport: 1366px;
+$min-viewport: 320px;
+
+// TYPOGRAPHY (for fluid typography)
+$max-font-size: 18px; // Base font-size for desktop
+$min-font-size: 16px; // Base font-size for mobile
+$desktop-scale: 1.33; // Unitless
+$mobile-scale: 1.2; // No unit too, please
+
+// FONT FAMILY
+$alt-font: Georgia, "Times New Roman", Times, serif; // For headings
+$base-font: "Familjen Grotesk"; // Body font
+
+// PALETTE
+// Enter your project colors below - 3 main colors - don't change the color names, $base, $alt, $action. Only the values.
+
+$action: #cd44ec; // For links and buttons
+$alt: #0000ff; // Secondary color
+$base: #ff005d; // Most used color on your website
+
+// Don't edit these contextual colors - only change the values if you have to
+$danger: #dc3545;
+$info: #18a2b8;
+$success: #29a745;
+$warning: #ffc10a;
+
+// For these settings below, it is advised you use KetoCSS variables
+
+// WEBSITE BODY SETTINGS
+$background-color: var(--white);
+$font-family: var(--base-font);
+$font-size: var(--text-m);
+$font-weight: var(--w-400);
+$header-height: 80px;
+$line-height: var(--line-xl);
+$text-color: var(--black);
+
+// HEADINGS (Default h1 - h6 settings)
+$heading-font-family: var(--alt-font);
+$heading-font-weight: var(--w-600);
+
+// INPUTS & BUTTONS
+$input-shadow: var(--shadow-s);
+$min-height: 2.5em;
+$padding-block: 0;
+$padding-inline: 0.25em;
+
+// BUTTON CLASS - ".btn" (Default settings)
+$btn-cursor-type: pointer;
+$btn-font-size: inherit;
+$btn-font-weight: var(--w-600);
+$btn-min-width: 150px; // Larger values may cause issues
+$btn-padding-block: 0.75em;
+$btn-padding-inline: 1.5em;
+$btn-text-color: inherit;
+$btn-text-decoration: none;
+$btn-text-transform: uppercase;
+
+// BORDER (e.g)
+$border-color: var(--black);
+$border-style: solid;
+$border-width: 1.5px;
+
+// BORDER RADIUS
+// e.g border-radius: var(--top-left), var(--top-right), var(--bottom-right), var(--bottom-left)
+
+$radius: var(--radius-s); // Set base border-radius
+$bottom-left: $radius;
+$bottom-right: $radius;
+$top-left: $radius;
+$top-right: $radius;
+
+// HOVER & FOCUS STATE
+$bg-active: var(--base-dark);
+$bg-focus: var(--base-hover);
+$bg-hover: var(--base-hover);
+$outline-color: var(--base);
+$outline-style: var(--border-style); // You can change
+$outline-width: var(--border-width); // You can change
+
+// TRANSITIONS (Site Default transition variables)
+$duration: 500ms; // You can use "s" too
+$function: ease;
+$property: all;

@@ -1,0 +1,68 @@
+/* DO NOT TOUCH */
+
+/* SCREEN READER ACCESSIBLE NO-DISPLAY */
+.assisted,
+.skip {
+	block-size: 1px;
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	inline-size: 1px;
+	margin: -1px;
+	overflow: hidden;
+	overflow-wrap: normal;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+.skip {
+	--bg: transparent;
+	--color: inherit;
+	--duration: 250ms;
+
+	align-items: center;
+	background-color: var(--bg);
+	color: var(--color);
+	display: inline-flex;
+	font-size: inherit;
+	gap: var(--em-m);
+	justify-content: center;
+	left: var(--space-s);
+	line-height: normal;
+	text-decoration: none;
+	top: var(--space-s);
+	transition: var(--normal);
+
+	&:focus {
+		--bg: var(--white);
+
+		block-size: auto;
+		clip: auto;
+		clip-path: none;
+		inline-size: auto;
+		margin: 0;
+		padding: 1em 1.5em;
+		z-index: 9999;
+	}
+}
+
+/* USER ANIMATION PREFERENCE */
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	::before,
+	::after {
+		animation-delay: -1ms;
+		animation-duration: 1ms;
+		animation-iteration-count: 1;
+		background-attachment: initial;
+		scroll-behavior: auto;
+		transition-delay: 0s;
+		transition-duration: 0s;
+	}
+}

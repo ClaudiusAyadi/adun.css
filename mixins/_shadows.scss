@@ -1,0 +1,6 @@
+@use "variables" as *;
+@use "../maps/shadows" as *;
+
+html {
+	@include variables($shadows);
+}

@@ -37,13 +37,11 @@
 		"not dead"
 	],
 	"devDependencies": {
-		"@csstools/postcss-sass": "^5.0.1",
 		"@fullhuman/postcss-purgecss": "^5.0.0",
 		"cssnano": "^6.0.1",
 		"postcss": "^8.4.30",
 		"postcss-cli": "^10.1.0",
 		"postcss-preset-env": "^9.1.4",
-		"postcss-scss": "^4.0.8",
-		"values.js": "^2.1.1"
+		"sass": "^1.69.5"
 	}
 }

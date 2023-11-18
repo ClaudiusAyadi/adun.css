@@ -1,0 +1,30 @@
+@use "../global" as *;
+@use "../functions/fluidity" as *;
+
+// BORDER MAP
+$borders: (
+	border: var(--border-width) var(--border-style) var(--border-color),
+	border-color: $border-color,
+	border-style: $border-style,
+	border-width: to-rem($border-width),
+) !default;
+
+// BORDER RADIUS MAP (from _global.scss)
+$border-radii: (
+	border-radius: var(--top-left) var(--top-right) var(--bottom-right) var(--bottom-left),
+	bottom-left: $bottom-left,
+	bottom-right: $bottom-right,
+	top-left: $top-left,
+	top-right: $top-right,
+) !default;
+
+// BORDER-RADIUS "--radius-" VARIABLES MAP
+$radii: (
+	radius-xs: to-rem(2.5px),
+	radius-s: to-rem(5px),
+	radius-m: to-rem(10px),
+	radius-l: to-rem(20px),
+	radius-50: 50%,
+	radius-100: 100%,
+	radius-full: 100vw,
+) !default;

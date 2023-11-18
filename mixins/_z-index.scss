@@ -1,0 +1,6 @@
+@use "variables" as *;
+@use "../maps/z-index" as *;
+
+html {
+	@include variables($z-index);
+}

@@ -1,0 +1,50 @@
+@use "variables" as *;
+@use "../maps/inputs" as *;
+
+/* INPUT DEFAULT SETTINGS */
+@mixin inputs {
+	@include variables($inputs);
+
+	background-color: var(--bg);
+	border: var(--border-width) var(--border-style) var(--border-color);
+	border-radius: var(--border-radius);
+	color: inherit;
+	font: inherit;
+	inline-size: 100%;
+	max-inline-size: 100%;
+	min-block-size: var(--min-height);
+	padding: var(--pad-y) var(--pad-x);
+	transition: var(--transition);
+	text-align: inherit;
+}
+
+input {
+	@include inputs;
+
+	&[type="number"] {
+		appearance: none;
+	}
+}
+
+textarea {
+	@include inputs;
+
+	appearance: none;
+}
+
+select {
+	@include inputs;
+
+	--bg: transparent;
+	--select-bg: linear-gradient(45deg, transparent 50%, var(--border-color) 0),
+		linear-gradient(135deg, var(--border-color) 50%, transparent 0);
+	--pad-y: var(--em-3);
+
+	appearance: none;
+	background-image: var(--select-bg);
+	background-position: calc(100% - 1.25rem) calc(50% + 0.125rem),
+		calc(100% - 1rem) calc(50% + 0.125rem);
+	background-repeat: no-repeat;
+	background-size: 0.25rem 0.25rem, 0.25rem 0.25rem;
+	cursor: pointer;
+}

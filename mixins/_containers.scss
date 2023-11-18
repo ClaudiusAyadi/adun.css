@@ -1,0 +1,6 @@
+@use "variables" as *;
+@use "../maps/containers" as *;
+
+:root {
+	@include variables($containers);
+}

@@ -1,0 +1,11 @@
+@use "classes" as *;
+@use "variables" as *;
+@use "../maps/border" as *;
+
+html {
+	@include variables($radii);
+	@include variables($borders);
+	@include variables($border-radii);
+}
+
+@include classes($radii, border-radius);

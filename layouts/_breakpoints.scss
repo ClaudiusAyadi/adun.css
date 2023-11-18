@@ -1,0 +1,28 @@
+// BREAKPOINTS
+$vp-xs: 360.98px;
+$vp-s: 480.98px;
+$vp-m: 768.98px;
+$vp-l: 992.98px;
+$vp-xl: 1280.98px;
+$vp-2xl: 1440px;
+
+@mixin up($width) {
+	@media only screen and (width >= $width) {
+		@content;
+	}
+}
+
+@mixin down($width) {
+	@media only screen and (width <= $width) {
+		@content;
+	}
+}
+
+/* 
+Example:
+p {
+	@include up($tablet) {
+	column-count: 3
+	}
+}
+*/

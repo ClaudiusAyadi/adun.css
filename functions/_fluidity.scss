@@ -1,0 +1,43 @@
+@use "sass:math";
+
+// FLUID TYPOGRAPHY
+
+// @function - Fluid type generator
+// @author - Alex S. (added a few tweak though)
+// @thanks - https://www.aleksandrhovhannisyan.com/blog/fluid-type-scale-with-css-clamp/#finding-the-preferred-value-for-clamp-with-linear-interpolation
+
+// Round Function
+@function rnd($number, $places: 0) {
+	$n: 1;
+	@if $places > 0 {
+		@for $i from 1 through $places {
+			$n: $n * 10;
+		}
+	}
+	@return math.div(math.round($number * $n), $n);
+}
+
+// px-to-rem Function
+@function to-rem($px) {
+	$rems: calc(math.div($px, 16px) * 1rem);
+	@return $rems;
+}
+
+// DEFAULTS (In case none is provided)
+$default-min: to-rem(16px);
+$default-max: to-rem(18px);
+$default-mob: to-rem(320px);
+$default-pc: to-rem(1366px);
+
+// Fluidity Function
+@function fluid(
+	$min: $default-min,
+	$max: $default-max,
+	$min-vp: $default-mob,
+	$max-vp: $default-pc
+) {
+	$slope: math.div($max - $min, $max-vp - $min-vp);
+	$slope-vw: rnd(calc($slope * 100), 4);
+	$intercept: rnd(calc($min - $slope * $min-vp), 4);
+	@return clamp(#{$min}, calc(#{$intercept} + #{$slope-vw}vw), #{$max});
+}

@@ -1,0 +1,10 @@
+@use "../global" as *;
+
+// TRANSITIONS  MAP
+$transitions: (
+	duration: $duration,
+	function: $function,
+	property: $property,
+	transition: var(--property) var(--duration) var(--function),
+	transition-alt: var(--duration) var(--function),
+) !default;

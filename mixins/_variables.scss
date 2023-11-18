@@ -1,0 +1,6 @@
+// ROOT CSS VARIABLE MIXIN
+@mixin variables($map-name) {
+	@each $map-item, $value in $map-name {
+		--#{$map-item}: #{$value};
+	}
+}

@@ -1,22 +1,16 @@
-const postcss = require("postcss");
-const sass = require("@csstools/postcss-sass");
 const preset = require("postcss-preset-env");
 const purgecss = require("@fullhuman/postcss-purgecss");
 const cssnano = require("cssnano");
 
 module.exports = {
 	plugins: [
-		postcss([sass()]).process("src/keto/scss/keto.scss", {
-			syntax: require("postcss-scss"),
-			parser: require("postcss-scss"),
-		}),
-		preset(),
+		preset({stage: 0}),
 		purgecss({
-			content: [
-				"./**/*.{html,js,jsx,ts,tsx,php}",
-				"./src/**/*.{html,js,jsx,ts,tsx,php}",
-				"./components/**/*.{html,js,jsx,ts,tsx,php}",
-			],
+			content: ["./app/**/*.{js,jsx,ts,tsx}", "./src/**/*.{js,jsx,ts,tsx}"],
+			css: "./src/keto/scss/keto.scss",
+			safelist: {
+				standard: ["html", "body", "svg"],
+			},
 		}),
 		cssnano({
 			preset: [

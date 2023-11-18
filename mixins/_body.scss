@@ -1,0 +1,28 @@
+@use "../maps/body" as *;
+@use "variables" as *;
+
+body {
+	@include variables($body-settings);
+
+	background-color: var(--bg);
+	background-size: cover;
+	color: var(--color);
+	display: flex;
+	flex-direction: column;
+	font-family: var(--font-family);
+	font-weight: var(--font-weight);
+	font-size: var(--font-size);
+	line-height: var(--line-height);
+	position: relative;
+	scroll-behavior: smooth;
+	text-rendering: optimizelegibility;
+	word-wrap: break-word;
+}
+
+#root {
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	min-block-size: 100vh;
+	isolation: isolate;
+}

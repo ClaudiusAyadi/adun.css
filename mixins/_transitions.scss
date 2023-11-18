@@ -1,0 +1,6 @@
+@use "variables" as *;
+@use "../maps/transitions" as *;
+
+html {
+	@include variables($transitions);
+}

@@ -1,0 +1,145 @@
+@use "../functions/colors" as *;
+@use "../maps/palette" as *;
+
+// COLOR SYSTEM
+
+// PALETTE ROOT VARIABLES
+html {
+	@each $color, $value in $palette {
+		// Palette variation map
+		$variations: (
+			"hover": pBSC($value, 0.15),
+			"ultra-light": pBSC($value, 0.8),
+			"light": pBSC($value, 0.7),
+			"medium": pBSC($value, 0.3),
+			"dark": pBSC($value, -0.45),
+			"ultra-dark": pBSC($value, -0.65),
+		);
+
+		// hsl root variables
+		--#{$color}-h: #{hue(get-hsl($value))};
+		--#{$color}-s: #{saturation(get-hsl($value))};
+		--#{$color}-l: #{lightness(get-hsl($value))};
+		--#{$color}: #{get-hsl($value)};
+
+		@each $variation, $variant in $variations {
+			--#{$color}-#{$variation}: #{get-hsl($variant)};
+		}
+
+		@for $i from 1 through 9 {
+			$step: $i * 0.1;
+			--#{$color}-trans-#{$i}: #{get-hsla($value, $step)};
+		}
+	}
+
+	@each $color, $value in $neutrals {
+		--#{$color}: #{get-hsl($value)};
+
+		@for $i from 1 through 9 {
+			$step: $i * 0.1;
+			--#{$color}-trans-#{$i}: #{get-hsla($value, $step)};
+		}
+
+		@if ($color == "white") {
+			@for $i from 1 through 9 {
+				$step: calc($i * 0.1);
+				$grey: pBSC($value, -$step);
+				--grey-#{$i}: #{get-hsl($grey)};
+			}
+		}
+	}
+
+	@each $color, $value in $contextual {
+		// Contextual color variation map
+		$context: (
+			"hover": pBSC($value, 0.15),
+			"light": pBSC($value, 0.8),
+			"dark": pBSC($value, -0.45),
+		);
+
+		--#{$color}: #{get-hsl($value)};
+
+		@each $variation, $variant in $context {
+			--#{$color}-#{$variation}: #{get-hsl($variant)};
+		}
+	}
+}
+
+// PALETTE BG/TEXT COLOR CLASSES
+@each $color, $value in $palette {
+	$variations: (
+		"hover": pBSC($value, 0.15),
+		"ultra-light": pBSC($value, 0.8),
+		"light": pBSC($value, 0.7),
+		"medium": pBSC($value, 0.3),
+		"dark": pBSC($value, -0.45),
+		"ultra-dark": pBSC($value, -0.65),
+	);
+
+	.bg-#{$color} {
+		background-color: var(--#{$color});
+	}
+
+	.text-#{$color} {
+		color: var(--#{$color});
+	}
+
+	@each $variation, $variant in $variations {
+		.bg-#{$color}-#{$variation} {
+			background-color: var(--#{$color}-#{$variation});
+		}
+
+		.text-#{$color}-#{$variation} {
+			color: var(--#{$color}-#{$variation});
+		}
+	}
+}
+
+// NEUTRAL BG/TEXT COLOR CLASSES
+@each $color, $value in $neutrals {
+	.bg-#{$color} {
+		background-color: var(--#{$color});
+	}
+
+	.text-#{$color} {
+		color: var(--#{$color});
+	}
+
+	@if ($color == "white") {
+		@for $i from 1 through 9 {
+			$step: calc($i * 0.1);
+			$grey: pBSC($value, -$step);
+			.bg-grey-#{$i} {
+				background-color: var(--grey-#{$i});
+			}
+		}
+	}
+}
+
+// CONTEXTUAL BG/TEXT COLOR CLASSES
+@each $color, $value in $contextual {
+	// Contextual color variation map
+	$context: (
+		"hover": pBSC($value, 0.15),
+		"light": pBSC($value, 0.8),
+		"dark": pBSC($value, -0.45),
+	);
+
+	.bg-#{$color} {
+		background-color: var(--#{$color});
+	}
+
+	.text-#{$color} {
+		color: var(--#{$color});
+	}
+
+	@each $variation, $variant in $context {
+		.bg-#{$color}-#{$variation} {
+			background-color: var(--#{$color}-#{$variation});
+		}
+
+		.text-#{$color}-#{$variation} {
+			color: var(--#{$color}-#{$variation});
+		}
+	}
+}

@@ -1,0 +1,11 @@
+@use "../global" as *;
+
+// HOVER & FOCUS STATE MAP
+$hover-focus: (
+	bg-active: $bg-active,
+	bg-focus: $bg-focus,
+	bg-hover: $bg-hover,
+	outline-color: $outline-color,
+	outline-style: $outline-style,
+	outline-width: $outline-width,
+) !default;

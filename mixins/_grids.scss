@@ -1,0 +1,26 @@
+@use "variables" as *;
+@use "../maps/grids" as *;
+
+// GRID SYSTEM
+html {
+	@for $i from 1 through 12 {
+		--grid-#{$i}: repeat(#{$i}, minmax(0, 1fr));
+
+		@include variables($more-grids);
+	}
+}
+
+// GRID UTILITY CLASSES
+@for $i from 1 through 12 {
+	.grid-#{$i} {
+		display: grid;
+		grid-template-columns: var(--grid-#{$i});
+	}
+}
+
+@each $grid, $value in $more-grids {
+	.#{$grid} {
+		display: grid;
+		grid-template-columns: var(#{$grid});
+	}
+}

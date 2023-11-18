@@ -1,0 +1,31 @@
+@use "../global" as *;
+@use "../functions/fluidity" as *;
+
+// SHADOW MAP
+$shadows: (
+	shadow-xs: (
+		0 to-rem(6px) to-rem(5px) rgb(0 0 0 / 0.012),
+		0 to-rem(22px) to-rem(18px) rgb(0 0 0 / 0.018),
+		0 to-rem(100px) to-rem(80px) rgb(0 0 0 / 0.03),
+	),
+	shadow-s: (
+		0 to-rem(6px) to-rem(5px) rgb(0 0 0 / 0.016),
+		0 to-rem(22px) to-rem(18px) rgb(0 0 0 / 0.024),
+		0 to-rem(100px) to-rem(80px) rgb(0 0 0 / 0.04),
+	),
+	shadow-m: (
+		0 to-rem(6px) to-rem(5px) rgb(0 0 0 / 0.02),
+		0 to-rem(22px) to-rem(18px) rgb(0 0 0 / 0.03),
+		0 to-rem(100px) to-rem(80px) rgb(0 0 0 / 0.05),
+	),
+	shadow-l: (
+		0 to-rem(6px) to-rem(5px) rgb(0 0 0 / 0.03),
+		0 to-rem(22px) to-rem(18px) rgb(0 0 0 / 0.042),
+		0 to-rem(100px) to-rem(80px) rgb(0 0 0 / 0.07),
+	),
+	shadow-xl: (
+		0 to-rem(6px) to-rem(5px) rgb(0 0 0 / 0.04),
+		0 to-rem(22px) to-rem(18px) rgb(0 0 0 / 0.06),
+		0 to-rem(100px) to-rem(80px) rgb(0 0 0 / 0.1),
+	),
+) !default;

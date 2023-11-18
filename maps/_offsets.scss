@@ -1,0 +1,10 @@
+@use "../global" as *;
+@use "../functions/fluidity" as *;
+
+// OFFSET MAP
+$offsets: (
+	header-height: to-rem($header-height),
+	offset: var(--header-height),
+	underline-offset: 0.25em,
+	underline-thickness: 0.2em,
+) !default;

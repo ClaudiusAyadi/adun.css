@@ -1,0 +1,7 @@
+@use "../global" as *;
+
+// HEADINGS MAP
+$headings: (
+	font-family: $heading-font-family,
+	font-weight: $heading-font-weight,
+) !default;

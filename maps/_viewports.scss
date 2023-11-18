@@ -1,0 +1,7 @@
+@use "../global" as *;
+
+// VIEWPORT MAP
+$viewports: (
+	max-viewport: $max-viewport,
+	min-viewport: $min-viewport,
+) !default;

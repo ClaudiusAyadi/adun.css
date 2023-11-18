@@ -1,0 +1,25 @@
+/* CLICKABLE PARENT/CARD */
+.clickable-parent {
+	position: relative;
+
+	a::before {
+		content: "";
+		cursor: pointer;
+		display: flex;
+		inset: 0;
+		position: absolute;
+		z-index: 1;
+	}
+
+	&:focus-within {
+		outline: var(--border);
+
+		:focus {
+			outline: none;
+		}
+
+		button:focus-visible {
+			outline: var(--border);
+		}
+	}
+}

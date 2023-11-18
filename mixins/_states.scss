@@ -1,0 +1,6 @@
+@use "variables" as *;
+@use "../maps/states" as *;
+
+html {
+	@include variables($hover-focus);
+}

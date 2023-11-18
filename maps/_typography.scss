@@ -1,0 +1,9 @@
+@use "../global" as *;
+
+// TYPOGRAPHY  MAP
+$typography: (
+	desktop-scale: $desktop-scale,
+	max-font-size: $max-font-size,
+	min-font-size: $min-font-size,
+	mobile-scale: $mobile-scale,
+) !default;

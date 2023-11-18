@@ -1,0 +1,7 @@
+@use "../global" as *;
+
+// FONT FAMILY MAP
+$font-names: (
+	alt-font: $alt-font,
+	base-font: $base-font,
+) !default;

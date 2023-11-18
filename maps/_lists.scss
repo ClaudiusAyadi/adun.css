@@ -1,0 +1,33 @@
+@use "sass:list";
+
+// LISTS
+
+$alignments: ("flex-start", "flex-end", "center", "space-between", "space-around", "space-evenly");
+
+$alignment-prefix: ("start", "end", "center", "sb", "sa", "se");
+
+$directions: ("col", "row", "col-reverse", "row-reverse");
+
+$displays: ("none", "block", "inline", "inline-block", "flex", "inline-flex", "grid");
+
+$lines: (
+	"no-line",
+	"line-2xs",
+	"line-xs",
+	"line-s",
+	"line-m",
+	"line-l",
+	"line-xl",
+	"line-2xl",
+	"line-3xl",
+	"line-4xl",
+	"line-5xl"
+);
+
+$placement: ("top", "right", "bottom", "left");
+
+$position: ("static", "relative", "absolute", "fixed", "sticky");
+
+$suffix: "2xs", "xs", "s", "m", "l", "xl", "2xl", "3xl", "4xl", "5xl";
+
+$text-transform: ("uppercase", "capitalize", "lowercase");

@@ -1,0 +1,104 @@
+/* BASE SETTINGS */
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+[role="button"],
+[type="button"],
+[type="reset"],
+[type="submit"] {
+	cursor: pointer;
+}
+
+button {
+	--bg: transparent;
+	--border-width: 0;
+
+	background-color: var(--bg);
+	border: var(--border);
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+option,
+optgroup,
+::placeholder {
+	color: inherit;
+	font: inherit;
+	text-align: inherit;
+}
+
+audio,
+canvas,
+embed,
+iframe,
+object,
+img,
+video {
+	block-size: auto;
+	color: inherit;
+	display: inline-block;
+	font: inherit;
+	inline-size: 100%;
+	max-inline-size: 100%;
+	vertical-align: middle;
+}
+
+picture {
+	block-size: 100%;
+	display: flex;
+	inline-size: 100%;
+	max-inline-size: 100%;
+}
+
+svg {
+	--font-size: inherit;
+
+	color: var(--color);
+	display: flex;
+	font: inherit;
+	font-size: var(--font-size);
+	pointer-events: none;
+}
+
+ul,
+ol {
+	--list: none;
+
+	list-style-type: var(--list);
+}
+
+table {
+	border-collapse: collapse;
+	inline-size: 100%;
+	max-inline-size: 100%;
+}
+
+/* DEFAULT LINKS */
+a {
+	--color: currentColor;
+	--td: none;
+
+	color: var(--color);
+	display: inline-flex;
+	text-decoration: var(--td);
+	transition: inherit;
+
+	&.underline {
+		--td: underline;
+
+		text-decoration-thickness: var(--underline-thickness);
+		text-underline-offset: var(--underline-offset);
+	}
+
+	&:hover,
+	&:active {
+		color: var(--color);
+	}
+}

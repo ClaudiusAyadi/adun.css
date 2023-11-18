@@ -1,0 +1,9 @@
+@use "classes" as *;
+@use "variables" as *;
+@use "../maps/font-family" as *;
+
+html {
+	@include variables($font-names);
+}
+
+@include classes($font-names, font-family);

@@ -1,0 +1,7 @@
+@use "../functions/fluidity" as *;
+@use "viewports" as *;
+
+// CONTAINER WIDTHS
+$containers: (
+	container: to-rem(map-get($viewports, max-viewport)),
+) !default;

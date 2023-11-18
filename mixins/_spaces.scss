@@ -1,0 +1,111 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "sass:string";
+@use "../maps/lists" as *;
+@use "../functions/fluidity" as *;
+@use "../maps/typography" as *;
+@use "../maps/viewports" as *;
+
+// "--space-" SPACING ROOT VARIABLES -
+html {
+	// VARIABLES
+	$min-spacing: to-rem(20px);
+	$max-spacing: to-rem(28px);
+
+	$desktop-scale: map-get($typography, desktop-scale);
+	$mobile-scale: map-get($typography, mobile-scale);
+
+	$max-vp: to-rem(map-get($viewports, max-viewport));
+	$min-vp: to-rem(map-get($viewports, min-viewport));
+	@for $i from 1 through length($suffix) {
+		$step: list.nth($suffix, $i);
+		$index: list.index($suffix, "m");
+		$power: $i - $index;
+		$min: rnd($min-spacing * math.pow($mobile-scale, $power), 4);
+		$max: rnd($max-spacing * math.pow($desktop-scale, $power), 4);
+		--space-#{$step}: #{fluid($min, $max, $min-vp, $max-vp)};
+	}
+}
+
+// ".space-" SPACING CLASSES
+@for $i from 1 through length($suffix) {
+	$step: list.nth($suffix, $i);
+	.gap-#{$step} {
+		gap: var(--space-#{$step});
+	}
+}
+
+// ".m[side]-" PADDING CLASSES
+@for $i from 1 through length($suffix) {
+	$step: list.nth($suffix, $i);
+	$pad: "pt", "pr", "pb", "pl", "px", "py";
+
+	@for $i from 1 through length($pad) {
+		$item: list.nth($pad, $i);
+		$firstLetter: string.slice($item, 1, 1);
+		$secondLetter: string.slice($item, 2, 2);
+
+		$property: if($firstLetter == "p", "padding", "");
+		$side: if(
+			$secondLetter == "t",
+			"top",
+			if(
+				$secondLetter == "r",
+				"right",
+				if(
+					$secondLetter == "b",
+					"bottom",
+					if(
+						$secondLetter == "l",
+						"left",
+						if($secondLetter == "x", "inline", if($secondLetter == "y", "block", ""))
+					)
+				)
+			)
+		);
+
+		@if ($property != "" and $side != "") {
+			.#{$item}-#{$step} {
+				#{$property}-#{$side}: var(--space-#{$step});
+			}
+		}
+	}
+}
+
+// ".m[side]-" MARGIN CLASSES
+@for $i from 1 through length($suffix) {
+	$step: list.nth($suffix, $i);
+	$mag: "mt", "mr", "mb", "ml", "mx", "my";
+
+	@for $i from 1 through length($mag) {
+		$item: list.nth($mag, $i);
+		$firstLetter: string.slice($item, 1, 1);
+		$secondLetter: string.slice($item, 2, 2);
+
+		$property: if($firstLetter == "m", "margin", "");
+		$side: if(
+			$secondLetter == "t",
+			"top",
+			if(
+				$secondLetter == "r",
+				"right",
+				if(
+					$secondLetter == "b",
+					"bottom",
+					if(
+						$secondLetter == "l",
+						"left",
+						if($secondLetter == "x", "inline", if($secondLetter == "y", "block", ""))
+					)
+				)
+			)
+		);
+
+		@if ($property != "" and $side != "") {
+			.#{$item}-#{$step} {
+				#{$property}-#{$side}: var(--space-#{$step});
+			}
+		}
+	}
+}

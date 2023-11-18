@@ -1,0 +1,45 @@
+@use "sass:color";
+
+// TINT-SHADE FUNCTION
+
+// @function - Tint & shade generator
+// @author - Claudius A
+// @thanks - https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors/73660199#73660199
+
+@function pBSC($c, $p) {
+	$n: $p < 0;
+	$t: if($n, 0, 255 * $p);
+	$w: if($n, 1 + $p, 1 - $p);
+
+	$red: round(color.red($c) * $w + $t);
+	$green: round(color.green($c) * $w + $t);
+	$blue: round(color.blue($c) * $w + $t);
+
+	@return rgb($red, $green, $blue);
+}
+
+// HSL FUNCTION
+
+// @function - Returns the hsl() of a color
+// @author - Claudius A
+
+@function get-hsl($hex) {
+	$h: round(hue($hex));
+	$s: round(saturation($hex));
+	$l: round(lightness($hex));
+
+	@return hsl($h $s $l);
+}
+
+// HSLA FUNCTION
+
+// @function - Returns the hsla() of a color
+// @author - Claudius A
+
+@function get-hsla($hex, $a) {
+	$h: round(hue($hex));
+	$s: round(saturation($hex));
+	$l: round(lightness($hex));
+
+	@return hsla($h, $s, $l, $a);
+}

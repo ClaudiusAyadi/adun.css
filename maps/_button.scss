@@ -1,0 +1,14 @@
+@use "../global" as *;
+
+// BUTTON MAP
+$btn: (
+	color: $btn-text-color,
+	cursor: $btn-cursor-type,
+	font-weight: $btn-font-weight,
+	font-size: $btn-font-size,
+	min-width: $btn-min-width,
+	pad-x: $btn-padding-inline,
+	pad-y: $btn-padding-block,
+	td: $btn-text-decoration,
+	tt: $btn-text-transform,
+) !default;
