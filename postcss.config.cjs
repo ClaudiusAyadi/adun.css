@@ -7,7 +7,7 @@ module.exports = {
 		preset({stage: 0}),
 		purgecss({
 			content: ["./app/**/*.{js,jsx,ts,tsx}", "./src/**/*.{js,jsx,ts,tsx}"],
-			css: "./src/keto/scss/keto.scss",
+			css: "./src/keto/keto.scss",
 			safelist: {
 				standard: ["html", "body", "svg"],
 			},
