@@ -22,8 +22,8 @@ Best of it, KetoCSS automatically generates all your color tints, shades, and tr
 ## GETTING STARTED
 
 1. Clone the repo or download the zip file and extract it.
-2. Copy the `devDependencies` into your project package.json and the `postcss.config.cjs` to your project root.
-3. Move the `keto` folder into your project and delete everything else here.
+2. Copy the `package.json` and the `postcss.config.cjs` to your project root.
+3. Move the `keto` folder into your project `/src` and delete everything else here.
 4. Install all dependencies:
 
 ```bash
