@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"type": "module",
 	"license": "MIT",
-	"description": "The #1 variable-first atomic design framework. It also has all our pre and post-deployment snippets.",
+	"description": "KetoCSS | The super-performant, variable-based, mobile-first, React-based, lean atomic design framework!",
 	"homepage": "https://github.com/ClaudiusAyadi/ketoCSS",
 	"repository": {
 		"type": "git",
